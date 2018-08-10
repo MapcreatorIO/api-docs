@@ -2,7 +2,6 @@
   "name": "slate",
   "version": "1.0.0",
   "scripts": {
-    "build": "npm run copy-pages && npm run compile-docs-api",
     "copy-pages": "cp pages/* source/",
     "compile-docs-api": "npx widdershins https://api.beta.maps4news.com/docs/assets/api-docs.json -e config/widdershins-api.json -o source/api.html.md"
   },
