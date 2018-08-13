@@ -1,3 +1,20 @@
+---
+title: Maps4News Basic API Usage
+
+language_tabs:
+  - javascript--wrapper: Wrapper
+  - php: PHP
+
+toc_footers:
+  - <a href='https://api.maps4news.com/register'>Sign Up for Maps4News</a>
+  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+
+includes:
+  - directory
+
+search: true
+---
+
 # Introduction
 
 ...

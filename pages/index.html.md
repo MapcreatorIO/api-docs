@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: Maps4News API Documentation
 
 language_tabs:
   - javascript--wrapper: Wrapper

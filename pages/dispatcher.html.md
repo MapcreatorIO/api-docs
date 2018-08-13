@@ -1,5 +1,5 @@
 ---
-title: Map Definition
+title: Maps4News Map Definition
 
 toc_footers:
   - <a href='https://api.maps4news.com/register'>Sign Up for Maps4News</a>
