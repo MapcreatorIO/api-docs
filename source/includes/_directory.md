@@ -4,4 +4,4 @@
  - [API](/api.html)
    - [API OpenAPI (Swagger) Definition](/api/index.html)
  - [API Wrapper](/wrapper.html)
-   - [API Wrapper API (Class) Documentation](/wrapper/index.html)
+   - [API Wrapper Class Documentation](/wrapper/index.html)

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "copy-pages": "cp pages/* source/",
-    "compile-docs-wrapper": "npx esdoc -c config/esdoc-wrapper.json"
+    "compile-docs-wrapper": "npx esdoc"
   },
   "dependencies": {
     "@mapcreator/maps4news": "^1.4.22",
@@ -11,5 +11,45 @@
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
     "esdoc-standard-plugin": "^1.0.0",
     "swagger-ui": "^3.18.1"
+  },
+  "esdoc": {
+    "name": "maps4news",
+    "index": "./node_modules/@mapcreator/maps4news/README.md",
+    "source": "./node_modules/@mapcreator/maps4news/src",
+    "destination": "./source/wrapper",
+    "plugins": [
+      {
+        "name": "esdoc-standard-plugin",
+        "option": {
+          "accessor": {
+            "access": [
+              "public",
+              "protected"
+            ],
+            "autoPrivate": true
+          },
+          "undocumentIdentifier": {
+            "enable": true
+          },
+          "unexportedIdentifier": {
+            "enable": false
+          },
+          "typeInference": {
+            "enable": true
+          },
+          "brand": {
+            "title": "Maps4News Api Wrapper",
+            "description": "Maps4News Api Javascript Wrapper"
+          }
+        }
+      },
+      {
+        "name": "esdoc-ecmascript-proposal-plugin",
+        "option": {
+          "all": true
+        }
+      }
+    ]
   }
+
 }

@@ -19,7 +19,7 @@ search: true
 
 Welcome to the API documentation for Maps4News.
 
-This API allows you to manage everything about your account and your organisation. As well as generate Maps.
+Our API allows you to manage everything about your Maps4News account and your organisation. As well as generate Maps.
 
 # API Wrapper
 
@@ -121,10 +121,10 @@ You must have a valid client registered with us to be able to use the API. Clien
 
 # Next
 
-The next step in learning about our API would be to look into our extensive documentation about all the available endpoints.
+The next step in learning about our API would be to look into our OpenAPI documentation about all the available endpoints.
 
-[API Swagger docs](api.html)
+[API OpenAPI (Swagger) Definition](/api/index.html)
 
 Our you can look into how the wrapper works.
 
-[API Wrapper docs](wrapper.html)
+[API Wrapper Class Documentation](/wrapper/index.html)
