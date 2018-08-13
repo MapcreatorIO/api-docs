@@ -1,0 +1,39 @@
+{
+  "name": "maps4news",
+  "index": "./node_modules/@mapcreator/maps4news/README.md",
+  "source": "./node_modules/@mapcreator/maps4news/src",
+  "destination": "./source/wrapper",
+  "plugins": [
+    {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "accessor": {
+          "access": [
+            "public",
+            "protected"
+          ],
+          "autoPrivate": true
+        },
+        "undocumentIdentifier": {
+          "enable": true
+        },
+        "unexportedIdentifier": {
+          "enable": false
+        },
+        "typeInference": {
+          "enable": true
+        },
+        "brand": {
+          "title": "Maps4News Api Wrapper",
+          "description": "Maps4News Api Javascript Wrapper"
+        }
+      }
+    },
+    {
+      "name": "esdoc-ecmascript-proposal-plugin",
+      "option": {
+        "all": true
+      }
+    }
+  ]
+}

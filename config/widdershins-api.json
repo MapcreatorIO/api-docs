@@ -1,5 +1,0 @@
-{
-  "language_tabs": [{"javascript": "JavaScript"}, {"php": "PHP"}],
-  "outfile": "source/api.html.md",
-  "user_templates": "config/api_templates"
-}

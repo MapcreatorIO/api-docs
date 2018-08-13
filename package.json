@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "scripts": {
     "copy-pages": "cp pages/* source/",
-    "compile-docs-api": "npx widdershins https://api.beta.maps4news.com/docs/assets/api-docs.json -e config/widdershins-api.json -o source/api.html.md"
+    "compile-docs-wrapper": "npx esdoc -c config/esdoc-wrapper.json"
   },
   "dependencies": {
     "@mapcreator/maps4news": "^1.4.22",
-    "jsdoc-to-markdown": "^4.0.1",
-    "widdershins": "^3.6.0"
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "swagger-ui": "^3.18.1"
   }
 }

@@ -17,6 +17,7 @@ build/
 .vagrant
 .sass-cache
 source/*.md
+source/wrapper
 
 # YARD artifacts
 .yardoc

@@ -1,7 +1,7 @@
 # Pages
 
  - [Home](index.html)
- - [API](api.html)
-   - [API OpenAPI (Swagger) Definition](http://api.maps4news.com/docs)
- - [API Wrapper](wrapper.html)
-   - [API Wrapper API (Class) Documentation](https://mapcreatoreu.github.com/api-wrapper)
+ - [API](/api.html)
+   - [API OpenAPI (Swagger) Definition](/api/index.html)
+ - [API Wrapper](/wrapper.html)
+   - [API Wrapper API (Class) Documentation](/wrapper/index.html)
