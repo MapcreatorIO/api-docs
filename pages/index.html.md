@@ -2,12 +2,15 @@
 title: API Reference
 
 language_tabs:
-  - php: PHP
   - javascript--wrapper: Wrapper
+  - php: PHP
 
 toc_footers:
   - <a href='https://api.maps4news.com/register'>Sign Up for Maps4News</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  
+includes:
+  - directory
 
 search: true
 ---
@@ -31,11 +34,28 @@ We have created a query builder-like library that is able to do everything our A
 
 The library is freely available on [github](https://github.com/MapCreatorEU/api-wrapper) and [npm](https://www.npmjs.com/package/@mapcreator/maps4news).
 
-More information about the wrapper can be found on [this page](/api-wrapper.html)
+More information about the wrapper can be found on [this page](/wrapper.html)
 
 # Authentication
 
 > To authorize, use this code:
+
+```javascript
+import { ImplicitFlow, Maps4News } from '@mapcreator/maps4news';
+
+const API_CLIENT_ID = 0;
+const API_HOST = 'https://api.maps4news.com';
+const REDIRECT_URL = 'http://localhost/';
+
+const auth = new ImplicitFlow(API_CLIENT_ID, REDIRECT_URL);
+const api = new Maps4News(auth, API_HOST);
+
+// Somewhere in your application
+api.authenticate();
+
+// Get the user's information
+api.users.get('me').then(console.log);
+```
 
 ```php
 This example uses the guzzlehttp package from composer.
@@ -91,23 +111,6 @@ $response = $http->get("$host/v1/users/me", [
 print_r(json_decode((string) $response->getBody()));
 ```
 
-```javascript
-import { ImplicitFlow, Maps4News } from '@mapcreator/maps4news';
-
-const API_CLIENT_ID = 0;
-const API_HOST = 'https://api.maps4news.com';
-const REDIRECT_URL = 'http://localhost/';
-
-const auth = new ImplicitFlow(API_CLIENT_ID, REDIRECT_URL);
-const api = new Maps4News(auth, API_HOST);
-
-// Somewhere in your application
-api.authenticate();
-
-// Get the user's information
-api.users.get('me').then(console.log);
-```
-
 > Make sure the <code>client_id</code>, <code>host</code> and <code>redirect_url</code> are correctly filled in.
 
 The Maps4News API is an OAuth2 API. We support implicit and password flows.
@@ -124,4 +127,4 @@ The next step in learning about our API would be to look into our extensive docu
 
 Our you can look into how the wrapper works.
 
-[API Wrapper docs](api-wrapper.html)
+[API Wrapper docs](wrapper.html)

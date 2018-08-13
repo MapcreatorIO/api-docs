@@ -6,6 +6,8 @@
     "compile-docs-api": "npx widdershins https://api.beta.maps4news.com/docs/assets/api-docs.json -e config/widdershins-api.json -o source/api.html.md"
   },
   "dependencies": {
+    "@mapcreator/maps4news": "^1.4.22",
+    "jsdoc-to-markdown": "^4.0.1",
     "widdershins": "^3.6.0"
   }
 }
