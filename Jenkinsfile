@@ -9,7 +9,7 @@ node('node') {
 	stage('build') {
 		sh 'npm install'
 		sh 'npm run copy-pages'
-		sh 'npm run compile-docs-api'
+		sh 'npm run compile-docs-wrapper'
 		sh 'sudo bundle install'
 		sh 'bundle exec middleman build --clean'
 	}
