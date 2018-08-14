@@ -17,7 +17,9 @@ search: true
 
 # Introduction
 
-...
+Try out the OpenAPI spec, the spec contains all the endpoints, info about how resources look and what each endpoint requires you to submit.
+
+To Log in and try it out hit the "Try out" button and use `client_id` **2**.
 
 # Return Data
 
