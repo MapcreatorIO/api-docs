@@ -112,7 +112,7 @@ The available operators are:
 There are a few keywords throughout the API that you can use in the url as shortcuts to certain resources.
 
 ```
-GET /users/me
+GET /v1/users/me
 ```
 
 For example, you can use `me` as an keyword for a user. This will return the resource of the logged in user.
@@ -120,7 +120,7 @@ For example, you can use `me` as an keyword for a user. This will return the res
 <br/>
 
 ```
-GET /organisations/mine
+GET /v1/organisations/mine
 ```
 
 A manager can use the `mine` keyword to get a list of organisations he/she manages.
@@ -128,7 +128,7 @@ A manager can use the `mine` keyword to get a list of organisations he/she manag
 <br/>
 
 ```
-GET /jobs/1/revisions/last
+GET /v1/jobs/1/revisions/last
 ```
 
 To get the last revision for a job, you can use the `last` keyword.

@@ -62,7 +62,7 @@ This example uses the guzzlehttp package from composer.
 
 <?php
 
-$host = "https://api.maps4news.com";
+$host = "https://api.maps4news.com/v1";
 $client_id = 0;
 $secret = "secret";
 $redirect_url = "http://localhost/callback";
