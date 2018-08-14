@@ -35,9 +35,9 @@
       window.onload = function () {
         // Build a system
         const ui = SwaggerUIBundle({
-          url: "https://api.beta.maps4news.com/docs/assets/api-docs.json",
+          url: "https://api.beta.maps4news.com/docs/assets/api-docs.json", // TODO change to live
           dom_id: '#swagger-ui',
-          // oauth2RedirectUrl: "none", // TODO
+          oauth2RedirectUrl: `${document.location.origin}/v1/api/oauth2-redirect.html`,
           presets: [
             SwaggerUIBundle.presets.apis,
             SwaggerUIStandalonePreset
@@ -47,6 +47,8 @@
           ],
           layout: "StandaloneLayout"
         });
+
+        ui.initOAuth({ clientId: 1 });
 
         window.ui = ui
       }
