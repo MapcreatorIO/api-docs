@@ -16,12 +16,9 @@ search: true
 ```
 // Using npm
 npm install --save @mapcreator/maps4news
-
-// Using yarn
-yarn add @mapcreator/maps4news
 ```
 
-Installation can be done through either npm or yarn.
+Installation can be done either through a node package manager, such as npm or yarn, or by including the browser bundle.
 
 ## NodeJS
 
@@ -50,7 +47,7 @@ Or when using ES6 import statements
 ## Browser Script Tag
 
 ```html
-<script src="https://unpkg.com/@mapcreator/maps4news@1.4.22/dist/bundle.browser.min.js"></script>
+<script src="https://unpkg.com/@mapcreator/maps4news/dist/bundle.browser.min.js"></script>
 ```
 
 > This html tag can be used without any other dependency in your html.
@@ -83,6 +80,14 @@ browser is not using a HTTPS connection. NodeJS uses a file named `.m4n_token` t
 Multiple flows are supported for web browsers. All the web examples assume the web
 build of the library has been included in the target page.
 
+## Machine token
+```js
+const token = "...";
+const api = new Maps4News(token);
+```
+
+A machine token can be used directly while instaciating the api instance. 
+
 ## Implicit flow
 
 ```js
@@ -111,35 +116,6 @@ guessed if none is provided.
 
 ## Implicit flow pop-up
 
-```js
-// Obtained client id
-var clientId = 1;
-
-// Callback url is set to the current url by default. The
-// script is smart enough close the page if it detects that
-// it's a child after authentication. This means that either
-// the current page can be set as the callback (default) or
-// a custom page that just contains `api.authenticate()`
-// that uses ImplicitFlowPopup as the auth parameter.
-var auth = new ImplicitFlowPopup(clientId);
-var api = new Maps4News(auth);
-
-// This will create a pop-up window containing the log in
-// page. Once the pop-up redirects back to the callback it
-// will resolve the promise. The callback page should contain
-api.authenticate().then(function() {
-  // Save the token
-  api.saveToken();
-  
-  // Get the current user and dump the result to the console.
-  api.users.get('me').then(console.dir);
-});
-```
-
-Just like the Implicit Flow a client id is required. 
-
-## Implicit flow pop-up (advanced)
-
 > index.html
 
 ```js
@@ -149,7 +125,6 @@ var callbackUrl = 'https://example.com/callback.html';
 var auth = new ImplicitFlowPopup(clientId);
 var api = new Maps4News(auth);
 
-// This will resolve once the callback page has been loaded
 api.authenticate().then(function() {
   // Save the token
   api.saveToken();
@@ -161,41 +136,16 @@ api.authenticate().then(function() {
 
 > callback.html
 
-```js
-var clientId = 1;
-
-// This will instantly detect the token and close the page
-new ImplicitFlowPopup(clientId);
+```html
+<html><body>
+  <h1>Nothing to see here 👻</h1>
+</body></html>
 ```
 
-Due to the nature of the implicit flow pop-up (referred to as IFP from now on)
-method the callback page can be set to a blank page that just grabs the token 
-and then closes. This can be done in the following way.
 
-## Password flow (dangerous)
+This will create a pop-up window containing the login page. Once the pop-up redirects back to the callback it will resolve the promise. The callback can be an empty page hosted on the same domain.
 
-```js
-var clientId = 1; // client id
-var secret = ''; // secret
-var username = 'user@example.com'; // email is used for authentication
-var password = 'Password1!'; // password
-
-// Secret will be leaked if this is used on a webpage. Please only use
-// this for non-web applications.
-var auth = new PasswordFlow(clientId, secret, username, password);
-var api = new Maps4News(auth);
-
-// This will resolve once the authentication has completed
-api.authenticate().then(function() {
-  // Get the current user and dump the result to the console.
-  api.users.get('me').then(console.dir);
-});
-```
-
-The password flow is **NOT** intended to be used in the browser. If you do 
-decide to use the password flow then it is recommended to make sure that 
-the site is **NOT** public facing and using HTTPS. Leaking the secret is
-a very bad idea.
+Callback url is set to the current url by default. The script is smart enough close the page if it detects that it's a child after authentication. This means that either the current page can be set as the callback (default) or a blank page. The callback must be hosted on the same domain as the application to allow for cross window communication.
 
 ## Dummy flow
 
@@ -219,65 +169,39 @@ api.authenticate().then(function() {
 
 The dummy flow can be used when a token *should* be present in the cache. 
 
-# Authentication NodeJS
-The library currently only supports the password flow and the dummy flow
-for nodeJS. Other flows might be added in the future.
-
-## Password Flow
-
-```js
-var clientId = 1; // client id
-var secret = ''; // secret
-var username = 'user@example.com'; // email is used for authentication
-var password = 'Password1!'; // password
-
-var auth = new PasswordFlow(clientId, secret, username, password);
-var api = new Maps4News(auth);
-
-// This will resolve once the authentication has completed
-api.authenticate().then(function() {
-  // Get the current user and dump the result to the console.
-  api.users.get('me').then(console.dir);
-});
-```
-
-Make sure to store your secret somewhere safe and to only store the token
-and **never** the unencrypted user password.
-
-## Dummy flow
-
-```js
-var auth = new DummyFlow();
-var api = new Maps4News(auth);
-
-var token = {
-  token: "eyJ0eXAiOiJKV1...",
-  type: "Bearer",
-  expires: "Thu, 18 May 2017 14:14:38 GMT"
-};
-
-// Set the token
-api.auth.token = OAuthToken.fromResponseObject(token);
-
-// Manually check if we're logged in
-if (api.authenticated) {
-    console.log('Found authentication token in cache!');
-}
-
-api.authenticate().then(function() {
-    // Will only resolve if a token was found
-    console.log("We're authenticated");
-}).catch(function(err) {
-    // This will be called if `api.authenticated` is false
-    console.log(err.toString());
-});
-```
-
-The dummy flow can also be used when a token is known.
-
 # Basics
+
+```js
+const me = await api.users.get('me');
+const colors = await me.colors.list();
+``` 
+
+> Which is the same as
+
+```js
+const colors = await api.users.select('me').colors.list();
+```
+
 These examples assume that an instance of the api exists and is authenticated. 
 See the node and web authentication examples for more information on authenticating.
+
+The wrapper exposes relations which return proxies. These proxies can be used to either build a route to a resource or to fetch resources. This means that `api.users.get('me')` is the same as calling the route `/v1/users/me`. All proxies expose the methods `new`, `list` and `lister`. Most proxies expose the methods `select` and `get`.   
+
+```js
+// Case translation
+const data = {
+  foo_bar_baz: 123
+};
+
+const test = api.static().new(data);
+
+test.fooBarBaz === 123;
+```
+
+The wrapper will transform snake_case named variables returned from the api into camelCase named variables. This means that for example `place_name` will be transformed into `placeName`. 
+
+Async methods return a `Promise` this means that both `then/catch` and `await/async` syntax are supported.
+
 
 ## Getting a resource
 
@@ -292,9 +216,9 @@ api.colors.get(1).then(function(color) {
 > Select the current user to quickly obtain related mapstyle sets
 
 ```js
-api.users.select('me').mapstyleSets().then(function(sets) {
-    for(var i = 0; i < sets.data.length; i++) {
-        console.log(sets.data[i].name);
+api.users.select('me').mapstyleSets.list().then(function(sets) {
+    for (const set of sets.data) {
+        console.log(`[${set.id}] ${set.name}`);
     }
 });
 ```
@@ -320,6 +244,7 @@ Create a new color and dump the new resource to the console after saving
 ```js
 api.users.get('me').then(me => {
   me.profession = 'Developer';
+  
   me.save(); // Optional chaining to get the updated resource
 });
 ```
@@ -336,6 +261,27 @@ api.colors.get(1).then(color => {
 ```
 
 Setting the id to null forces the creation of a new object upon saving. 
+
+## Creating a new job and revision
+
+```js
+const object = {}; // Should contain the map definition
+
+const job = await api.jobs.new({
+  title: "api map", 
+  jobTypeId: 1
+}).save();
+
+const revision = await job.revisions.new({
+	mapstyleSetId: 1
+}).save(object);
+
+// Will resolve when the request finishes. Not when the build is done. 
+await revision.build("https://example.com/callback"); 
+```
+
+Creating a new job and building it is pretty straight foreward. Revisions are slightly different then other resource instances. Their save function requires the new map definition as an argument. This is to make it easier to re-use the same revision instance.  
+
 
 ## Pagination
 
@@ -402,6 +348,8 @@ api.users.select('me').colors.list().then(page => {
   console.dir(page.data);
 });
 ```
+
+**warning**: The paginatedResourceListing is in the progress of being deprecated.
 
 ## Searching
 
