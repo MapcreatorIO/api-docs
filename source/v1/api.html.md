@@ -44,9 +44,9 @@ To Log in and try it out hit the "Try out" button and use `client_id` **2**.
 }
 ```
 
-All JSON responses from the API a wrapper in a base object.
+All JSON responses from the API is wrapped in a base object.
 
-Be sure to include an `Accept: application/json` header, otherwise errors like `401, 403 & 404` will either return HTML or redirect you to the login page.
+Be sure to include an `Accept: application/json` header, otherwise errors like `401`, `403` & `404` will either return HTML or redirect you to the login page.
 
 
 # Query Parameters
@@ -70,7 +70,9 @@ X-Page: 1
 X-Per-Page: 50
 ```
 
-By default de API returns 12 items per page. This can be increased to a maximum of 50 items per page.
+By default the API returns 12 items per page and defaults to page 1. 
+
+The number of items per page can be increased to a maximum of 50 items.
 
 ## Sorting
 
@@ -80,7 +82,7 @@ By default de API returns 12 items per page. This can be increased to a maximum 
 ?sort=-id,name
 ```
 
-The API supports sorting ascending or descending sorting on multiple columns (seperated by a comma) on the resources.
+The API supports sorting ascending or descending sorting on multiple columns (separated by a comma) on the resources.
 
 **Sortable columns are whitelisted inside the API, there is currently no documentation on what columns are whitelisted**
 
@@ -92,7 +94,8 @@ The API supports sorting ascending or descending sorting on multiple columns (se
 ?search[name]=Kevin&search[company]=$:4News
 ```
 
-Searching can be done on multiple columns, we use the URL array syntax for this.  
+Searching can be done on multiple columns, we use the URL array syntax for this.
+
 The basic syntax is `operator:value`, so: `=:Maps4News`
 
 **The same is for searchable columns, these are whitelisted per resource**

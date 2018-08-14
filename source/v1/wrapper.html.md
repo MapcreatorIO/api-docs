@@ -143,9 +143,14 @@ api.authenticate().then(function() {
 ```
 
 
-This will create a pop-up window containing the login page. Once the pop-up redirects back to the callback it will resolve the promise. The callback can be an empty page hosted on the same domain.
+This will create a pop-up window containing the login page.
+Once the pop-up redirects back to the callback it will resolve the promise.
+The callback can be an empty page hosted on the same domain.
 
-Callback url is set to the current url by default. The script is smart enough close the page if it detects that it's a child after authentication. This means that either the current page can be set as the callback (default) or a blank page. The callback must be hosted on the same domain as the application to allow for cross window communication.
+Callback url is set to the current url by default.
+The script is smart enough close the page if it detects that it's a child after authentication.
+This means that either the current page can be set as the callback (default) or a blank page.
+The callback must be hosted on the same domain as the application to allow for cross window communication.
 
 ## Dummy flow
 
@@ -171,6 +176,9 @@ The dummy flow can be used when a token *should* be present in the cache.
 
 # Basics
 
+These examples assume that an instance of the api exists and is authenticated. 
+See the node and web authentication examples for more information on authenticating.
+
 ```js
 const me = await api.users.get('me');
 const colors = await me.colors.list();
@@ -182,10 +190,13 @@ const colors = await me.colors.list();
 const colors = await api.users.select('me').colors.list();
 ```
 
-These examples assume that an instance of the api exists and is authenticated. 
-See the node and web authentication examples for more information on authenticating.
+The wrapper exposes relations which return proxies.
+These proxies can be used to either build a route to a resource or to fetch resources.
+This means that `api.users.get('me')` is the same as calling the route `/v1/users/me`.
+All proxies expose the methods `new`, `list` and `lister`.
+Most proxies expose the methods `select` and `get`.
 
-The wrapper exposes relations which return proxies. These proxies can be used to either build a route to a resource or to fetch resources. This means that `api.users.get('me')` is the same as calling the route `/v1/users/me`. All proxies expose the methods `new`, `list` and `lister`. Most proxies expose the methods `select` and `get`.   
+<br/><br/>
 
 ```js
 // Case translation
@@ -195,17 +206,18 @@ const data = {
 
 const test = api.static().new(data);
 
-test.fooBarBaz === 123;
+test.fooBarBaz === 123; // true
 ```
 
-The wrapper will transform snake_case named variables returned from the api into camelCase named variables. This means that for example `place_name` will be transformed into `placeName`. 
+The wrapper will transform snake_case named variables returned from the api into camelCase named variables.
+This means that for example `place_name` will be transformed into `placeName`.
 
 Async methods return a `Promise` this means that both `then/catch` and `await/async` syntax are supported.
 
 
 ## Getting a resource
 
-> Fetch resource and all it's properties
+> Fetch resource and all its properties
 
 ```js
 api.colors.get(1).then(function(color) {
@@ -223,12 +235,13 @@ api.users.select('me').mapstyleSets.list().then(function(sets) {
 });
 ```
 
-Resources are bound to the base api class by default. Resources can be fetched in 
-two ways; by selecting them (`.select`) or by fetching them (`.get`). Selecting them will only set the
-object's id to it's properties. Fetching a resource
+Resources are bound to the base api class by default. Resources can be fetched in two ways;
+by selecting them (`.select`) or by fetching them (`.get`). Selecting them will only set the
+object's id to its properties. Fetching a resource returns a `Promise` that will resolve with the requested resource.
 
-Selection is only useful as a stepping stone to related resources that can be easily obtained 
-using the id of the parent. Please refer to the api documentation for further reference.
+Selection is only useful as a stepping stone to related resources that can be easily obtained using the id of the parent.
+
+Please refer to the [api documentation](/wrapper/class/src/proxy/ResourceProxy.js~ResourceProxy.html) for further reference.
 
 ## Create a new resource
 
@@ -261,29 +274,6 @@ api.colors.get(1).then(color => {
 ```
 
 Setting the id to null forces the creation of a new object upon saving. 
-
-## Creating a new job and revision
-
-```js
-const object = {}; // Should contain the map definition
-
-const job = await api.jobs.new({
-  title: "api map", 
-  jobTypeId: 1
-}).save();
-
-const revision = await job.revisions.new({
-  mapstyleSetId: 1
-}).save(object);
-
-// Will resolve when the request finishes. Not when the build is done. 
-await revision.build("https://example.com/callback"); 
-```
-
-Creating a new job and building it is pretty straight forward.
-Revisions are slightly different then other resource instances.
-Their save function requires the new map definition as an argument.
-This is to make it easier to re-use the same revision instance.
 
 ## Pagination
 

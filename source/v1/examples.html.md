@@ -54,7 +54,7 @@ Details about how to build a map object can be found on the [map object page](di
 <br/>
 
 ```javascript--wrapper
-await revision.build();
+await revision.build("http://example.com/callback");
 ```
 
 Lastly, we can queue a build of your map. This will create a `JobResult` resource for that revision.

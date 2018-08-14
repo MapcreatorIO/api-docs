@@ -8,6 +8,7 @@
     "@mapcreator/maps4news": "^1.4.22",
     "esdoc": "^1.1.0",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-importpath-plugin": "^1.0.2",
     "esdoc-standard-plugin": "^1.0.0",
     "swagger-ui": "^3.18.1"
   },
@@ -47,8 +48,19 @@
         "option": {
           "all": true
         }
+      },
+      {
+        "name": "esdoc-importpath-plugin",
+        "option": {
+          "stripPackageName": true,
+          "replaces": [
+            {
+              "from": "src",
+              "to": "@mapcreator/maps4news/src"
+            }
+          ]
+        }
       }
     ]
   }
-
 }
