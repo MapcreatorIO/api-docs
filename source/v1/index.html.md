@@ -10,7 +10,7 @@ toc_footers:
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
   
 includes:
-  - directory
+  - v1/directory
 
 search: true
 ---
@@ -34,7 +34,7 @@ We have created a query builder-like library that is able to do everything our A
 
 The library is freely available on [github](https://github.com/MapCreatorEU/api-wrapper) and [npm](https://www.npmjs.com/package/@mapcreator/maps4news).
 
-More information about the wrapper can be found on [this page](/wrapper.html)
+More information about the wrapper can be found on [this page](wrapper.html)
 
 # Authentication
 
@@ -123,7 +123,7 @@ You must have a valid client registered with us to be able to use the API. Clien
 
 The next step in learning about our API would be to look into our OpenAPI documentation about all the available endpoints.
 
-[API OpenAPI (Swagger) Definition](/api/index.html)
+[API OpenAPI (Swagger) Definition](api/index.html)
 
 Our you can look into how the wrapper works.
 

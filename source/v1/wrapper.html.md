@@ -6,7 +6,7 @@ toc_footers:
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
   
 includes:
-  - directory
+  - v1/directory
 
 search: true
 ---
@@ -86,7 +86,7 @@ const token = "...";
 const api = new Maps4News(token);
 ```
 
-A machine token can be used directly while instaciating the api instance. 
+A machine token can be used directly while instantiating the api instance. 
 
 ## Implicit flow
 
@@ -273,15 +273,17 @@ const job = await api.jobs.new({
 }).save();
 
 const revision = await job.revisions.new({
-	mapstyleSetId: 1
+  mapstyleSetId: 1
 }).save(object);
 
 // Will resolve when the request finishes. Not when the build is done. 
 await revision.build("https://example.com/callback"); 
 ```
 
-Creating a new job and building it is pretty straight foreward. Revisions are slightly different then other resource instances. Their save function requires the new map definition as an argument. This is to make it easier to re-use the same revision instance.  
-
+Creating a new job and building it is pretty straight forward.
+Revisions are slightly different then other resource instances.
+Their save function requires the new map definition as an argument.
+This is to make it easier to re-use the same revision instance.
 
 ## Pagination
 
@@ -369,4 +371,4 @@ api.layers.search(query).then(console.dir);
 The `search` method is an extension of `list`. This means that `.search({})` is the same as 
 `list()`. More information about search query formatting can be found in the api documentation.
  
-[api documepntation]: https://api.beta.maps4news.com/docs/
+[api documentation]: https://api.beta.maps4news.com/docs/

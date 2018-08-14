@@ -10,7 +10,7 @@ toc_footers:
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - directory
+  - v1/directory
 
 search: true
 ---
@@ -19,7 +19,7 @@ search: true
 
 ## Building a Map
 
-```Wrapper
+```javascript--wrapper
 const api = window.api;
 ```
 
@@ -34,7 +34,7 @@ const job = await api.jobs.new({
 }).save();
 ```
 
-First a [`Job`](/api/index.html#JobCreateRequest). A Job is a project on the Maps4News Platform.
+First a [`Job`](api/index.html#JobCreateRequest). A Job is a project on the Maps4News Platform.
 
 <br/><br/><br/><br/>
 
@@ -45,11 +45,11 @@ const revision = await job.revisions.new({
 }).save(mapObject);
 ```
 
-Second a [`Job Revision`](/api/index.html#JobRevisionCreateRequest). A Revision is a point-in-time that the user decided to save his/her current progress in designing their map.
+Second a [`Job Revision`](api/index.html#JobRevisionCreateRequest). A Revision is a point-in-time that the user decided to save his/her current progress in designing their map.
 
 A map object must be given to each revision. Revisions can not be updated, each save will result in a new revision.
 
-Details about how to build a map object can be found on the [map object page](/dispatcher.html).
+Details about how to build a map object can be found on the [map object page](dispatcher.html).
 
 <br/>
 
