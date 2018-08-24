@@ -110,7 +110,7 @@ The available operators are:
  - `<=`: Smaller than or equals operator
  - `^`: Starts with operator
  - `$`: Ends with operator
- - Or no operator, that will result in a `LIKE` statement
+ - `~`: Or no operator, that will result in a `LIKE` statement
 
 # Keywords
 
