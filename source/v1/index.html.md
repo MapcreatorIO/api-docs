@@ -40,7 +40,7 @@ More information about the wrapper can be found on [this page](wrapper.html)
 
 > To authorize, use this code:
 
-```javascript
+```javascript--wrapper
 import { ImplicitFlow, Maps4News } from '@mapcreator/maps4news';
 
 const API_CLIENT_ID = 0;
