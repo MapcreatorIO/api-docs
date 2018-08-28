@@ -2,11 +2,8 @@
 title: Maps4News Map Definition
 
 toc_footers:
-  - <a href='https://api.maps4news.com/register'>Sign Up for Maps4News</a>
+  - <a href='https://api.maps4news.com/register'>Sign up for Maps4news</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
-  
-includes:
-  - v1/directory
 
 search: true
 ---

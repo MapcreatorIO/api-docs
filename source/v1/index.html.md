@@ -6,11 +6,8 @@ language_tabs:
   - php: PHP
 
 toc_footers:
-  - <a href='https://api.maps4news.com/register'>Sign Up for Maps4News</a>
+  - <a href='https://api.maps4news.com/register'>Sign up for Maps4News</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
-  
-includes:
-  - v1/directory
 
 search: true
 ---
@@ -21,7 +18,7 @@ Welcome to the API documentation for Maps4News.
 
 Our API allows you to manage everything about your Maps4News account and your organisation. As well as generate Maps.
 
-# API Wrapper
+## API Wrapper
 
 > You can install the library using:
 
@@ -29,14 +26,14 @@ Our API allows you to manage everything about your Maps4News account and your or
 npm install @mapcreator/maps4news
 ```
 
-If you are using JavaScript to develop your app then you are in luck. 
+If you are using JavaScript to develop your app then you are in luck.
 We have created a query builder-like library that is able to do everything our API offers. It even does the Oauth login for you, in redirect, popup or password flow.
 
 The library is freely available on [github](https://github.com/MapCreatorEU/api-wrapper) and [npm](https://www.npmjs.com/package/@mapcreator/maps4news).
 
 More information about the wrapper can be found on [this page](wrapper.html)
 
-# Authentication
+## Authentication
 
 > To authorize, use this code:
 
@@ -65,7 +62,7 @@ This example uses the guzzlehttp package from composer.
 $host = "https://api.maps4news.com/v1";
 $client_id = 0;
 $secret = "secret";
-$redirect_url = "http://localhost/callback";
+$redirect_uri = "http://localhost/callback";
 
 ////////////////////////////
 // /login route in your app.
@@ -73,7 +70,7 @@ $redirect_url = "http://localhost/callback";
 // Prepare redirect to API login page.
 $query = http_build_query([
     'client_id' => $client_id,
-    'redirect_uri' => 'http://localhost/callback',
+    'redirect_uri' => $redirect_uri,
     'response_type' => 'code'
 ]);
 
@@ -91,7 +88,7 @@ $response = $http->post("$host/oauth/token", [
         'grant_type' => 'authorization_code',
         'client_id' => $client_id,
         'client_secret' => $secret,
-        'redirect_uri' => $redirect_url,
+        'redirect_uri' => $redirect_uri,
         'code' => $_POST['code']
     ]
 ]);
@@ -119,12 +116,540 @@ The Maps4News API is an OAuth2 API. We support implicit and password flows.
 You must have a valid client registered with us to be able to use the API. Clients are currently on request.
 </aside>
 
-# Next
+# API
 
-The next step in learning about our API would be to look into our OpenAPI documentation about all the available endpoints.
+## Introduction
 
-[API OpenAPI (Swagger) Definition](api/index.html)
+Have a look at our [OpenAPI spec](https://api.beta.maps4news.com/docs), the spec contains all the endpoints, info about how resources look and what each endpoint requires you to submit.
 
-Our you can look into how the wrapper works.
+To Log in and try it out hit the "Try out" button and use `client_id` **2**.
 
-[API Wrapper Class Documentation](/wrapper/index.html)
+## Return Data
+
+> For Success Responses
+
+```json
+{
+  "success": true,
+  "data": {
+    ...
+  }
+}
+```
+
+> For Error Responses
+
+```json
+{
+  "success": false,
+  "error": {
+    "type": "HttpNotFoundException",
+    "message": "Page Not Found"
+  }
+}
+```
+
+All JSON responses from the API is wrapped in a base object.
+
+Be sure to include an `Accept: application/json` header, otherwise errors like `401`, `403` & `404` will either return HTML or redirect you to the login page.
+
+
+## Query Parameters
+
+The API has a few query parameters available that you can use to help find the resources you need.
+
+All three of these query parameters are only available on listing endpoints, so endpoints that return an array of items.
+
+### Pagination
+
+> As Query Parameter
+
+```
+?page=1&per_page=50
+```
+
+> As Header
+
+```
+X-Page: 1
+X-Per-Page: 50
+```
+
+By default the API returns 12 items per page and defaults to page 1.
+
+The number of items per page can be increased to a maximum of 50 items.
+
+### Sorting
+
+> Sort ID Descending and Name Ascending
+
+```
+?sort=-id,name
+```
+
+The API supports sorting ascending or descending sorting on multiple columns (separated by a comma) on the resources.
+
+**Sortable columns are whitelisted inside the API, there is currently no documentation on what columns are whitelisted**
+
+### Searching
+
+> Search for name LIKE "Kevin" and company That Ends With "4News"
+
+```
+?search[name]=Kevin&search[company]=$:4News
+```
+
+Searching can be done on multiple columns, we use the URL array syntax for this.
+
+The basic syntax is `operator:value`, so: `=:Maps4News`
+
+**The same is for searchable columns, these are whitelisted per resource**
+
+The available operators are:
+
+ - `!`: Not operator
+ - `=`: Equals operator
+ - `>`: Bigger than operator
+ - `<`: Smaller than operator
+ - `>=`: Bigger than or equals operator
+ - `<=`: Smaller than or equals operator
+ - `^`: Starts with operator
+ - `$`: Ends with operator
+ - `~`: Or no operator, that will result in a `LIKE` statement
+
+## Keywords
+
+There are a few keywords throughout the API that you can use in the url as shortcuts to certain resources.
+
+```
+GET /v1/users/me
+```
+
+For example, you can use `me` as an keyword for a user. This will return the resource of the logged in user.
+
+<br/>
+
+```
+GET /v1/organisations/mine
+```
+
+A manager can use the `mine` keyword to get a list of organisations he/she manages.
+
+<br/>
+
+```
+GET /v1/jobs/1/revisions/last
+```
+
+To get the last revision for a job, you can use the `last` keyword.
+
+# Wrapper
+
+Have a look at the Wrapper's [ESDoc API documentation](/wrapper/index.html).
+
+## Installation
+
+```
+// Using npm
+npm install --save @mapcreator/maps4news
+```
+
+Installation can be done either through a node package manager, such as npm or yarn, or by including the browser bundle.
+
+### NodeJS
+
+```js
+var m4n = require('@mapcreator/maps4news');
+
+// Do stuff
+var auth = new m4n.ImplicitFlow(1);
+var api = new m4n.Maps4News(auth);
+```
+
+After installation the package can be imported as follows
+
+<br/><br/>
+
+### ES6
+
+```js
+import { Maps4News, DummyFlow } from '@mapcreator/maps4news';
+
+// Do stuff
+var auth = new DummyFlow();
+var api = new Maps4News(auth);
+```
+
+Or when using ES6 import statements
+
+<br/><br/>
+
+### Browser Script Tag
+
+```html
+<script src="https://unpkg.com/@mapcreator/maps4news/dist/bundle.browser.min.js"></script>
+```
+
+> This html tag can be used without any other dependency in your html.
+
+```js
+const { Maps4News, DummyFlow } = window.maps4news;
+
+// Do stuff
+var auth = new DummyFlow();
+var api = new Maps4News(auth);
+```
+
+You can also include the wrapper via a script tag in your html file.
+
+## Authentication
+
+Authentication is done through OAuth. This library provides multiple OAuth flow
+implementations for authentication. A client id can be obtained through a support
+ticket but this is planned to change in the near future. The client will first
+check if any tokens can be found in the cache before requiring authentication.
+If one can be found the `api.authenticate()` method will instantly resolve without
+any side-effects. The variable `api.authenticated` will be set to true if a token
+has been found and is still valid.
+
+Tokens are stored in HTTPS cookies if possible and using `localStorage` when the
+browser is not using a HTTPS connection. NodeJS uses a file named `.m4n_token` to store the token.
+
+## Authentication Web
+
+Multiple flows are supported for web browsers. All the web examples assume the web
+build of the library has been included in the target page.
+
+### Machine token
+```js
+const token = "...";
+const api = new Maps4News(token);
+```
+
+A machine token can be used directly while instantiating the api instance.
+
+## Implicit flow
+
+```js
+// Obtained client id
+var clientId = 1;
+
+// Callback url is set to the current url by default
+var auth = new ImplicitFlow(clientId);
+var api = new Maps4News(auth);
+
+// This will hijack the page if no authentication cache can
+// be found. Smartest thing to do is to just let it happen
+// and initialize any other code afterwards.
+api.authenticate().then(function() {
+  // Save the token
+  api.saveToken();
+
+  // Get the current user and dump the result to the console.
+  api.users.get('me').then(console.dir);
+});
+```
+
+A client id is required to use the implicit flow. The redirect url *must* be the
+same as the one linked to the client id. The callback url is automatically
+guessed if none is provided.
+
+## Implicit flow pop-up
+
+> index.html
+
+```js
+var clientId = 1;
+var callbackUrl = 'https://example.com/callback.html';
+
+var auth = new ImplicitFlowPopup(clientId);
+var api = new Maps4News(auth);
+
+api.authenticate().then(function() {
+  // Save the token
+  api.saveToken();
+
+  // Get the current user and dump the result to the console.
+  api.users.get('me').then(console.dir);
+});
+```
+
+> callback.html
+
+```html
+<html><body>
+  <h1>Nothing to see here 👻</h1>
+</body></html>
+```
+
+
+This will create a pop-up window containing the login page.
+Once the pop-up redirects back to the callback it will resolve the promise.
+The callback can be an empty page hosted on the same domain.
+
+Callback url is set to the current url by default.
+The script is smart enough close the page if it detects that it's a child after authentication.
+This means that either the current page can be set as the callback (default) or a blank page.
+The callback must be hosted on the same domain as the application to allow for cross window communication.
+
+## Dummy flow
+
+```js
+var auth = new DummyFlow();
+var api = new Maps4News(auth);
+
+// Manually check if we're logged in
+if (api.authenticated) {
+    console.log('Found authentication token in cache!');
+}
+
+api.authenticate().then(function() {
+    // Will only resolve if a token was found
+    console.log("We're authenticated");
+}).catch(function(err) {
+    // This will be called if `api.authenticated` is false
+    console.log(err.toString());
+});
+```
+
+The dummy flow can be used when a token *should* be present in the cache.
+
+## Basics
+
+These examples assume that an instance of the api exists and is authenticated.
+See the node and web authentication examples for more information on authenticating.
+
+```js
+const me = await api.users.get('me');
+const colors = await me.colors.list();
+```
+
+> Which is the same as
+
+```js
+const colors = await api.users.select('me').colors.list();
+```
+
+The wrapper exposes relations which return proxies.
+These proxies can be used to either build a route to a resource or to fetch resources.
+This means that `api.users.get('me')` is the same as calling the route `/v1/users/me`.
+All proxies expose the methods `new`, `list` and `lister`.
+Most proxies expose the methods `select` and `get`.
+
+<br/><br/>
+
+```js
+// Case translation
+const data = {
+  foo_bar_baz: 123
+};
+
+const test = api.static().new(data);
+
+test.fooBarBaz === 123; // true
+```
+
+The wrapper will transform snake_case named variables returned from the api into camelCase named variables.
+This means that for example `place_name` will be transformed into `placeName`.
+
+Async methods return a `Promise` this means that both `then/catch` and `await/async` syntax are supported.
+
+
+## Getting a resource
+
+> Fetch resource and all its properties
+
+```js
+api.colors.get(1).then(function(color) {
+    console.log(color.id + " " + color.name + ": " + color.hex);
+});
+```
+
+> Select the current user to quickly obtain related mapstyle sets
+
+```js
+api.users.select('me').mapstyleSets.list().then(function(sets) {
+    for (const set of sets.data) {
+        console.log(`[${set.id}] ${set.name}`);
+    }
+});
+```
+
+Resources are bound to the base api class by default. Resources can be fetched in two ways;
+by selecting them (`.select`) or by fetching them (`.get`). Selecting them will only set the
+object's id to its properties. Fetching a resource returns a `Promise` that will resolve with the requested resource.
+
+Selection is only useful as a stepping stone to related resources that can be easily obtained using the id of the parent.
+
+Please refer to the [api documentation](/wrapper/class/src/proxy/ResourceProxy.js~ResourceProxy.html) for further reference.
+
+## Create a new resource
+
+```js
+var data = { name: 'Smurf', hex: '88CCFF' };
+api.colors.new(data).save().then(console.dir);
+```
+
+Create a new color and dump the new resource to the console after saving
+
+## Modify a resource
+
+```js
+api.users.get('me').then(me => {
+  me.profession = 'Developer';
+
+  me.save(); // Optional chaining to get the updated resource
+});
+```
+
+Change profession of the current user and save it.
+
+## Clone a resource
+
+```js
+api.colors.get(1).then(color => {
+  color.id = null;
+  color.save();
+});
+```
+
+Setting the id to null forces the creation of a new object upon saving.
+
+## Pagination
+
+> Listing resources with pagination. First page with 5 items per page
+
+```js
+api.colors.list(1, 5).then(page => {
+  console.log('Got resources:');
+
+  for (var i = 0; i < page.data.length; i++) {
+    console.log(page.data[i].toString());
+  }
+});
+```
+
+> Loop over every page and print the result to the console
+
+```js
+function parsePages(page) {
+  for (var i = 0; i < page.data.length; i++) {
+    console.log(page.data[i].toString());
+  }
+
+  if (page.hasNext) {
+    console.log('Grabbing page ' + (page.page + 1));
+    page.next().then(parsePage);
+  }
+}
+
+api.colors
+   .list(1, 50)
+   .then(parsePages);
+```
+
+> Loop over all pages and return the data in a promise
+
+```js
+function parsePages(page) {
+  var data = [];
+
+  function parse(page) {
+      data = data.concat(page.data);
+
+      if(page.hasNext) {
+          return page.next().then(parse);
+      } else {
+          return data;
+      }
+  }
+
+  return parse(page);
+}
+
+api.colors
+   .list(1, 50)
+   .then(parsePages)
+   .then(d => console.log('Total rows: ' + d.length));
+```
+
+> Select current user but do not fetch any info to make fetching resources easier
+
+```js
+api.users.select('me').colors.list().then(page => {
+  console.dir(page.data);
+});
+```
+
+**warning**: The paginatedResourceListing is in the progress of being deprecated.
+
+## Searching
+
+> Resource lists can be queried to search for specific records as follows
+
+```js
+var query = {
+  name: '^:test',
+  scale_min: ['>:1', '<:10'],
+}
+
+api.layers.search(query).then(console.dir);
+```
+
+**deprecated** - Will change soon.
+
+The `search` method is an extension of `list`. This means that `.search({})` is the same as
+`list()`. More information about search query formatting can be found in the api documentation.
+
+# Examples
+
+## Building a Map
+
+```javascript--wrapper
+const api = window.api;
+```
+
+To build a map via our system, you first need to create a few resources.
+
+<br/>
+
+```javascript--wrapper
+const job = await api.jobs.new({
+  jobTypeId: 1,
+  title: "My Map"
+}).save();
+```
+
+First a [`Job`](api/index.html#JobCreateRequest). A Job is a project on the Maps4News Platform.
+
+<br/><br/><br/><br/>
+
+```javascript--wrapper
+const revision = await job.revisions.new({
+  languageCode: "eng",
+  mapstyleSetId: 1
+}).save(mapObject);
+```
+
+Second a [`Job Revision`](api/index.html#JobRevisionCreateRequest). A Revision is a point-in-time that the user decided to save his/her current progress in designing their map.
+
+A map object must be given to each revision. Revisions can not be updated, each save will result in a new revision.
+
+Details about how to build a map object can be found on the [map object page](dispatcher.html).
+
+<br/>
+
+```javascript--wrapper
+await revision.build("http://example.com/callback");
+```
+
+Lastly, we can queue a build of your map. This will create a `JobResult` resource for that revision.
+
+<br/>
+
+```javascript--wrapper
+const result = await revision.result();
+```
+
+You can access your result via the `result` method on your revision. Expect your result to be queued or processing if you get your result directly after queueing a build. It generally takes a few seconds to a few minutes to generate a map.
+
