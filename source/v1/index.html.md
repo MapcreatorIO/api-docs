@@ -617,6 +617,10 @@ const job = await api.jobs.new({
 }).save();
 ```
 
+```php
+// TODO
+```
+
 First a [`Job`](api/index.html#JobCreateRequest). A Job is a project on the Maps4News Platform.
 
 <br/><br/><br/><br/>
@@ -626,6 +630,10 @@ const revision = await job.revisions.new({
   languageCode: "eng",
   mapstyleSetId: 1
 }).save(mapObject);
+```
+
+```php
+// TODO
 ```
 
 Second a [`Job Revision`](api/index.html#JobRevisionCreateRequest). A Revision is a point-in-time that the user decided to save his/her current progress in designing their map.
@@ -640,12 +648,20 @@ Details about how to build a map object can be found on the [map object page](di
 await revision.build("http://example.com/callback");
 ```
 
+```php
+// TODO
+```
+
 Lastly, we can queue a build of your map. This will create a `JobResult` resource for that revision.
 
 <br/>
 
 ```javascript--wrapper
 const result = await revision.result();
+```
+
+```php
+// TODO
 ```
 
 You can access your result via the `result` method on your revision. Expect your result to be queued or processing if you get your result directly after queueing a build. It generally takes a few seconds to a few minutes to generate a map.
