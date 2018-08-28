@@ -112,13 +112,11 @@ print_r(json_decode((string) $response->getBody()));
 
 The Maps4News API is an OAuth2 API. We support implicit and password flows.
 
-<aside class="notice">
-You must have a valid client registered with us to be able to use the API. Clients are currently on request.
-</aside>
+<aside class="notice">You need a OAuth Client or Personal Access Token to use the API.</aside>
 
 # API
 
-## Introduction
+To register an OAuth Client or Personal Access Token, please [log into the API](https://api.beta.maps4news.com) register one via your account settings.
 
 Have a look at our [OpenAPI spec](https://api.beta.maps4news.com/docs), the spec contains all the endpoints, info about how resources look and what each endpoint requires you to submit.
 
@@ -153,7 +151,6 @@ All JSON responses from the API is wrapped in a base object.
 
 Be sure to include an `Accept: application/json` header, otherwise errors like `401`, `403` & `404` will either return HTML or redirect you to the login page.
 
-
 ## Query Parameters
 
 The API has a few query parameters available that you can use to help find the resources you need.
@@ -178,6 +175,8 @@ X-Per-Page: 50
 By default the API returns 12 items per page and defaults to page 1.
 
 The number of items per page can be increased to a maximum of 50 items.
+
+<br/><br/><br/><br/><br/><br/>
 
 ### Sorting
 
@@ -382,7 +381,6 @@ api.authenticate().then(function() {
 </body></html>
 ```
 
-
 This will create a pop-up window containing the login page.
 Once the pop-up redirects back to the callback it will resolve the promise.
 The callback can be an empty page hosted on the same domain.
@@ -453,7 +451,6 @@ The wrapper will transform snake_case named variables returned from the api into
 This means that for example `place_name` will be transformed into `placeName`.
 
 Async methods return a `Promise` this means that both `then/catch` and `await/async` syntax are supported.
-
 
 ## Getting a resource
 
