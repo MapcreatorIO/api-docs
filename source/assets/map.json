@@ -1,0 +1,65 @@
+{
+  "type": "map",
+  "data": {
+    "meta": {
+      "language": "eng",
+      "rotation": 0,
+      "copyright": {
+        "font": {
+          "size": {
+            "value": 1,
+            "unit": "millimeter"
+          },
+          "name": "Helvetica",
+          "color": {
+            "R": 0,
+            "G": 0,
+            "B": 0
+          }
+        },
+        "anchor": "topleft"
+      },
+      "szhack": false,
+      "preview": true
+    },
+    "paper": {
+      "size": {
+        "width": {
+          "value": 5,
+          "unit": "centimeter"
+        },
+        "height": {
+          "value": 5,
+          "unit": "centimeter"
+        }
+      }
+    },
+    "scaleDefinition": {
+      "downLeft": {
+        "coordSys": "wgs",
+        "lat": 51.421730,
+        "lon": 5.439652
+      },
+      "upRight": {
+        "coordSys": "wgs",
+        "lat": 51.457426,
+        "lon": 5.513880
+      }
+    },
+    "icons": [
+      {
+        "id": 1,
+        "name": "Text Box",
+        "source": "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"81.36\" height=\"62.76\" mol_popupanchor=\"10.76 0\" viewBox=\"-0.7937500000000002 0.6749999999999998 21.525 16.603125\" xml:space=\"preserve\" mol_embed=\"true\" mol_dragall=\"true\" mol_resizeenabled=\"false\" mol_initial_update=\"TitleText\" mol_svganchor=\"11.46875 14.984375\"><g id=\"scale\" transform=\"scale(1)\"><path id=\"PointerPath\" d=\"M 9.96875 10.984375 L 9.96875 12.984375 L 11.46875 14.984375\" style=\"fill:none; stroke-width: 0.3;\" stroke=\"#000000\" mol_edit_style=\"false\" mol_edit_anchor=\"0 2\" mol_rectposition=\"BodyRect bottom middle\"></path><rect id=\"TopRect\" width=\"17.9375\" height=\"5.15625\" x=\"1\" y=\"2.46875\" fill=\"#000000\" stroke-dasharray=\"null\" stroke-width=\"0.1\" stroke=\"#000000\" mol_autoresizeid=\"TitleText\" mol_autoresizemargin=\"1\" mol_stack=\"top BodyRect\"></rect><rect id=\"BodyRect\" width=\"17.9375\" height=\"3.359375\" x=\"1\" y=\"7.625\" fill=\"#ffffff\" stroke-dasharray=\"null\" stroke-width=\"0.1\" stroke=\"#000000\" mol_sameheight=\"BodyText 0.5\" mol_stack=\"bottom TopRect\"></rect><text id=\"TitleText\" x=\"2\" y=\"6\" font-family=\"Helvetica\" font-weight=\"bold\" font-style=\"normal\" font-size=\"2.82222\" fill=\"#FFFFFF\" style=\"font-kerning:none; white-space:pre;\" mol_edit_style=\"true\" mol_edit_text=\"true\" mol_font=\"Helvetica-Bold\">Title stretch</text><text id=\"BodyText\" x=\"1.5\" y=\"10.01875\" font-family=\"Helvetica\" font-weight=\"normal\" font-style=\"normal\" font-size=\"2.11667\" fill=\"#000000\" style=\"font-kerning:none; white-space:pre;\" text-anchor=\"start\" mol_edit_style=\"true\" mol_edit_text=\"true\" mol_wrap=\"true BodyRect 0.5\" mol_font=\"Helvetica\"><tspan x=\"1.5\" dy=\"0\" id=\"BodyText0\">Body wrap</tspan></text><circle id=\"Point\" cx=\"11.46875\" cy=\"14.984375\" r=\"0.5\" fill=\"#000000\" stroke=\"none\" mol_pathposition=\"PointerPath 0 2\"></circle></g></svg>",
+        "coord": {
+          "coordSys": "wgs",
+          "lat": 51.438524,
+          "lon": 5.478412
+        }
+      }
+    ],
+    "output": [
+      "png"
+    ]
+  }
+}

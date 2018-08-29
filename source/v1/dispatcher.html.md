@@ -20,20 +20,11 @@ This object represents a coordinate
 | -------- | ------ | -------- | ---------------------------------------- |
 | coordSys | string | Yes      | Defines the type of coordinate, can either be "wgs" |
 
-
-
 ### wgsCoordinate
 
 This object represents a wgsCoordinate
 
 ##### Extends
-
-- coordinateBase
-
-| Field | Type   | Required | Description |
-| ----- | ------ | -------- | ----------- |
-| lat   | number | Yes      | Latitide    |
-| long  | number | Yes      | Longitude   |
 
 ```json
 {
@@ -43,16 +34,14 @@ This object represents a wgsCoordinate
 }
 ```
 
+- coordinateBase
 
+| Field | Type   | Required | Description |
+| ----- | ------ | -------- | ----------- |
+| lat   | number | Yes      | Latitide    |
+| long  | number | Yes      | Longitude   |
 
 ### coordinate
-
-This object represents a coordinate
-
-This object can either be
-
-- wgsCoordinate
-
 
 ```json
 {
@@ -62,17 +51,13 @@ This object can either be
 }
 ```
 
+This object represents a coordinate
 
+This object can either be
 
+- wgsCoordinate
 
 ### boundingBox
-
-This object represents a bounding-box
-
-| Field    |    Type    | Required | Description                              |
-| -------- | :--------: | :------: | ---------------------------------------- |
-| downLeft | coordinate |   Yes    | Down left coordinate of the bounding box |
-| upRight  | coordinate |   Yes    | Up right coordinate of the bounding box  |
 
 ```json
 {
@@ -84,21 +69,22 @@ This object represents a bounding-box
   "upRight": {
     "coordSys": "wgs",
     "lat": 36.355587,
-    "long": 140.639232    
+    "long": 140.639232
   }
 }
 ```
 
+This object represents a bounding-box
 
+| Field    |    Type    | Required | Description                              |
+| -------- | :--------: | :------: | ---------------------------------------- |
+| downLeft | coordinate |   Yes    | Down left coordinate of the bounding box |
+| upRight  | coordinate |   Yes    | Up right coordinate of the bounding box  |
+
+<!-- For Slate -->
+<br/><br/>
 
 ### size
-
-This object represents the definition of a real-life size ( not based on scale )
-
-| Field |  Type  | Required | Description                              |
-| ----- | :----: | :------: | :--------------------------------------- |
-| value | number |   Yes    | Value for the size.                      |
-| unit  | string |   Yes    | Type of size, can be either “centimeter”, “millimeter”, “yard”, "foot", "inch" or "point" |
 
 ```json
 {
@@ -107,15 +93,14 @@ This object represents the definition of a real-life size ( not based on scale )
 }
 ```
 
+This object represents the definition of a real-life size ( not based on scale )
 
+| Field |  Type  | Required | Description                              |
+| ----- | :----: | :------: | :--------------------------------------- |
+| value | number |   Yes    | Value for the size.                      |
+| unit  | string |   Yes    | Type of size, can be either “centimeter”, “millimeter”, “yard”, "foot", "inch" or "point" |
 
 ### fromPois
-
-This object represents the definition of a bounding box that is based on the locations of the POI's
-
-| Field  | Type | Required | Description                              |
-| ------ | :--: | :------- | ---------------------------------------- |
-| margin | Size | Yes      | Margin that makes the bounding box grow at the top, bottom, left and right |
 
 ```json
 {
@@ -126,16 +111,13 @@ This object represents the definition of a bounding box that is based on the loc
 }
 ```
 
+This object represents the definition of a bounding box that is based on the locations of the POI's
 
+| Field  | Type | Required | Description                              |
+| ------ | :--: | :------- | ---------------------------------------- |
+| margin | Size | Yes      | Margin that makes the bounding box grow at the top, bottom, left and right |
 
 ### scale
-
-This object represents the definition of a bounding box that is based on a scale and center coordinate.
-
-| Field |    Type    | Required | Description                        |
-| ----- | :--------: | :------: | ---------------------------------- |
-| scale |  integer   |   Yes    | The scale of the map. ***min***: 1 |
-| coord | coordinate |   Yes    | Center of the map                  |
 
 ```json
 {
@@ -148,16 +130,14 @@ This object represents the definition of a bounding box that is based on a scale
 }
 ```
 
+This object represents the definition of a bounding box that is based on a scale and center coordinate.
 
+| Field |    Type    | Required | Description                        |
+| ----- | :--------: | :------: | ---------------------------------- |
+| scale |  integer   |   Yes    | The scale of the map. ***min***: 1 |
+| coord | coordinate |   Yes    | Center of the map                  |
 
 ### dimension
-
-This object represents the definition of a dimension ( not based on scale )
-
-| Field  | Type | Required | Description               |
-| ------ | :--: | :------: | :------------------------ |
-| width  | size |   Yes    | Width size for dimension  |
-| height | size |   yes    | Height size for dimension |
 
 ```json
 {
@@ -172,17 +152,17 @@ This object represents the definition of a dimension ( not based on scale )
 }
 ```
 
+This object represents the definition of a dimension ( not based on scale )
 
+| Field  | Type | Required | Description               |
+| ------ | :--: | :------: | :------------------------ |
+| width  | size |   Yes    | Width size for dimension  |
+| height | size |   yes    | Height size for dimension |
+
+<!-- For Slate -->
+<br/>
 
 ### color
-
-This object represents the definition of a RGB color
-
-| Field |  Type   | Required | Description       |
-| ----- | :-----: | :------: | :---------------- |
-| R     | integer |   Yes    | Red color value   |
-| G     | integer |   Yes    | Green color value |
-| B     | integer |   Yes    | Blue color value  |
 
 ```json
 {
@@ -192,17 +172,15 @@ This object represents the definition of a RGB color
 }
 ```
 
+This object represents the definition of a RGB color
 
+| Field |  Type   | Required | Description       |
+| ----- | :-----: | :------: | :---------------- |
+| R     | integer |   Yes    | Red color value   |
+| G     | integer |   Yes    | Green color value |
+| B     | integer |   Yes    | Blue color value  |
 
 ### line
-
-This object represents the definition of a line
-
-| Field     |  Type  | Required | Description                              |
-| --------- | :----: | :------: | :--------------------------------------- |
-| color     | color  |   Yes    | Color of the line                        |
-| thickness |  size  |   Yes    | Thickness of the line based on a real-life size |
-| style     | string |   Yes    | Style of the line, can either be: "solid", "dotted", "dash5_5", "dash3_7", "dashDot", "dashDot1", "dashDotDot", "ticked", "doubleDash", "dotDash", "beaded" |
 
 ```json
 {
@@ -219,16 +197,15 @@ This object represents the definition of a line
 }
 ```
 
+This object represents the definition of a line
 
+| Field     |  Type  | Required | Description                              |
+| --------- | :----: | :------: | :--------------------------------------- |
+| color     | color  |   Yes    | Color of the line                        |
+| thickness |  size  |   Yes    | Thickness of the line based on a real-life size |
+| style     | string |   Yes    | Style of the line, can either be: "solid", "dotted", "dash5_5", "dash3_7", "dashDot", "dashDot1", "dashDotDot", "ticked", "doubleDash", "dotDash", "beaded" |
 
 ### textbox
-
-This object represents a textbox
-
-| Field      | Type  | Required | Description                     |
-| ---------- | :---: | :------: | :------------------------------ |
-| background | color |    No    | Background color of the textbox |
-| border     | line  |    No    | Border line of the textbox      |
 
 ```json
 {
@@ -252,18 +229,17 @@ This object represents a textbox
 }
 ```
 
+This object represents a textbox
 
+| Field      | Type  | Required | Description                     |
+| ---------- | :---: | :------: | :------------------------------ |
+| background | color |    No    | Background color of the textbox |
+| border     | line  |    No    | Border line of the textbox      |
+
+<!-- For Slate -->
+<br/><br/><br/><br/><br/><br/><br/><br/>
 
 ### font
-
-This object represents a font
-
-| Field   |  Type  | Required | Description                              |
-| ------- | :----: | :------: | :--------------------------------------- |
-| size    |  size  |   Yes    | Size of the font in real-life size       |
-| name    | string |   Yes    | Fontname, possible values can be found in the font section of the documentation |
-| color   | color  |   Yes    | Color of the font                        |
-| outline |  line  |    No    | Outline style of the font                |
 
 ```json
 {
@@ -280,16 +256,16 @@ This object represents a font
 }
 ```
 
+This object represents a font
 
+| Field   |  Type  | Required | Description                              |
+| ------- | :----: | :------: | :--------------------------------------- |
+| size    |  size  |   Yes    | Size of the font in real-life size       |
+| name    | string |   Yes    | Fontname, possible values can be found in the font section of the documentation |
+| color   | color  |   Yes    | Color of the font                        |
+| outline |  line  |    No    | Outline style of the font                |
 
 ### position
-
-This object represents a position based on an X and Y offset from the top left of the map
-
-| Field | Type | Required | Description                  |
-| ----- | ---- | :------: | ---------------------------- |
-| X     | size |   Yes    | X offset in a real-life size |
-| Y     | size |   Yes    | Y offset in a real-life size |
 
 ```json
 {
@@ -304,16 +280,17 @@ This object represents a position based on an X and Y offset from the top left o
 }
 ```
 
+This object represents a position based on an X and Y offset from the top left of the map
 
+| Field | Type | Required | Description                  |
+| ----- | ---- | :------: | ---------------------------- |
+| X     | size |   Yes    | X offset in a real-life size |
+| Y     | size |   Yes    | Y offset in a real-life size |
+
+<!-- For Slate -->
+<br/>
 
 ### alignment
-
-This object represents an alignment on the map or on an icon
-
-
-| Field | Type   | Required | Description                              |
-| ----- | ------ | -------- | ---------------------------------------- |
-| type  | string | Yes      | Type of size, can be either "topleft", "centerleft", "bottomleft", "centertop", "centerbottom", "topright", "centerright", "bottomright", "middle" |
 
 ```json
 {
@@ -321,19 +298,13 @@ This object represents an alignment on the map or on an icon
 }
 ```
 
+This object represents an alignment on the map or on an icon
 
+| Field | Type   | Required | Description                              |
+| ----- | ------ | -------- | ---------------------------------------- |
+| type  | string | Yes      | Type of size, can be either "topleft", "centerleft", "bottomleft", "centertop", "centerbottom", "topright", "centerright", "bottomright", "middle" |
 
 ### label
-
-This object represents a label
-
-| Field    | Type      | Required | Description                           |
-| -------- | --------- | -------- | ------------------------------------- |
-| text     | string    | Yes      | Text that the label will contain      |
-| font     | font      | Yes      | The font definition of the label      |
-| textbox  | textbox   | No       | The textbox that the label will be in |
-| location | position  | Yes      | Position on the map                   |
-| anchor   | alignment | Yes      | Where does the position need to start |
 
 ```json
 {
@@ -359,19 +330,20 @@ This object represents a label
 }
 ```
 
+This object represents a label
 
+| Field    | Type      | Required | Description                           |
+| -------- | --------- | -------- | ------------------------------------- |
+| text     | string    | Yes      | Text that the label will contain      |
+| font     | font      | Yes      | The font definition of the label      |
+| textbox  | textbox   | No       | The textbox that the label will be in |
+| location | position  | Yes      | Position on the map                   |
+| anchor   | alignment | Yes      | Where does the position need to start |
+
+<!-- For Slate -->
+<br/><br/><br/><br/>
 
 ### scalebar
-
-This object represents a scalebar
-
-| Field    | Type      | Required | Description                              |
-| -------- | --------- | -------- | ---------------------------------------- |
-| size     | size      | Yes      | Size of the scalebar                     |
-| fontname | string    | Yes      | Name of the font that the scalebar will use |
-| type     | string    | Yes      | Type of scalebar, can either be "metric" or "imperial" |
-| margin   | dimension | No       | Offset/Margin of the scalebar            |
-| anchor   | alignment | Yes      | Anchor on the map                        |
 
 ```json
 {
@@ -395,19 +367,20 @@ This object represents a scalebar
 }
 ```
 
+This object represents a scalebar
 
+| Field    | Type      | Required | Description                              |
+| -------- | --------- | -------- | ---------------------------------------- |
+| size     | size      | Yes      | Size of the scalebar                     |
+| fontname | string    | Yes      | Name of the font that the scalebar will use |
+| type     | string    | Yes      | Type of scalebar, can either be "metric" or "imperial" |
+| margin   | dimension | No       | Offset/Margin of the scalebar            |
+| anchor   | alignment | Yes      | Anchor on the map                        |
+
+<!-- For Slate -->
+<br/><br/><br/>
 
 ### northIndicator
-
-This object represents a north indicator
-
-| Field     | Type      | Required | Description                          |
-| --------- | --------- | -------- | ------------------------------------ |
-| size      | size      | Yes      | Size of the north indicator          |
-| arrow     | color     | No       | Color of the arrow                   |
-| northSign | color     | No       | Color of the font                    |
-| margin    | dimension | No       | Offset/Margin of the north indicator |
-| anchor    | alignment | Yes      | Anchor on the map                    |
 
 ```json
 {
@@ -439,19 +412,20 @@ This object represents a north indicator
 }
 ```
 
+This object represents a north indicator
 
+| Field     | Type      | Required | Description                          |
+| --------- | --------- | -------- | ------------------------------------ |
+| size      | size      | Yes      | Size of the north indicator          |
+| arrow     | color     | No       | Color of the arrow                   |
+| northSign | color     | No       | Color of the font                    |
+| margin    | dimension | No       | Offset/Margin of the north indicator |
+| anchor    | alignment | Yes      | Anchor on the map                    |
+
+<!-- For Slate -->
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 ### grid
-
-This object represents a grid that will be put on top of the map
-
-| Field         | Type    | Required | Description                              |
-| ------------- | ------- | -------- | ---------------------------------------- |
-| line          | line    | Yes      | Defines the line that the grid will use  |
-| font          | font    | Yes      | Defines the font for the characters of the grid |
-| lineDist      | size    | Yes      | Defines the distance between each line   |
-| alphaHori     | string  | Yes      | Type of grid, can either be "oneChar", "twoChar", "doubleChar" |
-| charsPerBlock | integer | Yes      | Defines the chars per block              |
 
 ```json
 {
@@ -488,18 +462,20 @@ This object represents a grid that will be put on top of the map
 }
 ```
 
+This object represents a grid that will be put on top of the map
 
+| Field         | Type    | Required | Description                              |
+| ------------- | ------- | -------- | ---------------------------------------- |
+| line          | line    | Yes      | Defines the line that the grid will use  |
+| font          | font    | Yes      | Defines the font for the characters of the grid |
+| lineDist      | size    | Yes      | Defines the distance between each line   |
+| alphaHori     | string  | Yes      | Type of grid, can either be "oneChar", "twoChar", "doubleChar" |
+| charsPerBlock | integer | Yes      | Defines the chars per block              |
+
+<!-- For Slate -->
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 ### polygon
-
-This objects represents a polygon
-
-| Field      | Type    | Required | Description                              |
-| ---------- | ------- | -------- | ---------------------------------------- |
-| outline    | line    | No       | Outline definition of the polygon        |
-| fill       | color   | No       | Fill color of the polygon                |
-| polystring | string  | Yes      | Encoded string of the coordinates.       |
-| solid      | boolean | Yes      | Defines if the polygon needs to be cleared of labels |
 
 ```json
 {
@@ -513,16 +489,16 @@ This objects represents a polygon
 }
 ```
 
+This objects represents a polygon
 
+| Field      | Type    | Required | Description                              |
+| ---------- | ------- | -------- | ---------------------------------------- |
+| outline    | line    | No       | Outline definition of the polygon        |
+| fill       | color   | No       | Fill color of the polygon                |
+| polystring | string  | Yes      | Encoded string of the coordinates.       |
+| solid      | boolean | Yes      | Defines if the polygon needs to be cleared of labels |
 
 ### polyline
-
-This objects represents a polyline 
-
-| Field      | Type   | Required | Description                       |
-| ---------- | ------ | -------- | --------------------------------- |
-| line       | line   | Yes      | Line definition of the polystring |
-| polystring | string | Yes      | Encoded string of the coordinates |
 
 ```json
 {
@@ -541,16 +517,17 @@ This objects represents a polyline
 }
 ```
 
+This objects represents a polyline
 
+| Field      | Type   | Required | Description                       |
+| ---------- | ------ | -------- | --------------------------------- |
+| line       | line   | Yes      | Line definition of the polystring |
+| polystring | string | Yes      | Encoded string of the coordinates |
+
+<!-- For Slate -->
+<br/><br/><br/><br/>
 
 ### mapstyle
-
-This objects represents a mapstyle
-
-| Field | Type    | Required | Description                   |
-| ----- | ------- | -------- | ----------------------------- |
-| name  | string  | Yes      | Filename of the mapstyle      |
-| scale | integer | Yes      | Maximum scale of the mapstyle |
 
 ```json
 {
@@ -559,18 +536,14 @@ This objects represents a mapstyle
 }
 ```
 
+This objects represents a mapstyle
 
+| Field | Type    | Required | Description                   |
+| ----- | ------- | -------- | ----------------------------- |
+| name  | string  | Yes      | Filename of the mapstyle      |
+| scale | integer | Yes      | Maximum scale of the mapstyle |
 
 ### copyright
-
-This object represents a copyright box
-
-| Field   | Type      | Required | Description                              |
-| ------- | --------- | -------- | ---------------------------------------- |
-| textbox | textbox   | No       | Defines the textbox where the copyright string will be in |
-| font    | font      | Yes      | Defines the font that will be used for the copyright |
-| anchor  | alignment | Yes      | Defines where on the map the copyright should be aligned |
-| margin  | dimension | No       | Margin/Offset of the copyright based on the anchor |
 
 ```json
 {
@@ -600,9 +573,63 @@ This object represents a copyright box
 }
 ```
 
+This object represents a copyright box
 
+| Field   | Type      | Required | Description                              |
+| ------- | --------- | -------- | ---------------------------------------- |
+| textbox | textbox   | No       | Defines the textbox where the copyright string will be in |
+| font    | font      | Yes      | Defines the font that will be used for the copyright |
+| anchor  | alignment | Yes      | Defines where on the map the copyright should be aligned |
+| margin  | dimension | No       | Margin/Offset of the copyright based on the anchor |
+
+<!-- For Slate -->
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 ### metadata
+
+```json
+{
+  "id": 1,
+  "mapstyle": [
+    {
+      "name":"Here10k.xml",
+      "scale":16249
+    },
+    {
+      "name":"Here20k.xml",
+      "scale":27499
+    }
+  ],
+  "rotation": 0,
+  "copyright": {
+    "font": {
+      "name": "Helvetica",
+      "size": {
+        "unit": "millimeter",
+        "value": 0.1
+      },
+      "color": {
+        "R": 0,
+        "G": 0,
+        "B": 0
+      }
+    },
+    "anchor": "centertop",
+    "margin": {
+      "width": {
+        "unit": "millimeter",
+        "value": 0.1
+      },
+      "height": {
+        "unit": "millimeter",
+        "value" 0.1
+      }
+    }
+  },
+  "szhack": false,
+  "preview": true
+}
+```
 
 This object represents metadata
 
@@ -615,6 +642,8 @@ This object represents metadata
 | szhack      | boolean           | Yes      | Defines if the map needs to implement the szhack for latin encoding |
 | preview     | boolean           | Yes      | Defines if the map needs to generate a png preview |
 
+### metadata-basis
+
 ```json
 {
   "id": 1,
@@ -630,38 +659,36 @@ This object represents metadata
   ],
   "rotation": 0,
   "copyright": {
-  	"font": {
+    "font": {
       "name": "Helvetica",
       "size": {
-      	"unit": "millimeter",
-      	"value": 0.1
+        "unit": "millimeter",
+        "value": 0.1
       },
       "color": {
-      	"R": 0,
-      	"G": 0,
-      	"B": 0
+        "R": 0,
+        "G": 0,
+        "B": 0
       }
-  	},
-  	"anchor": "centertop",
-  	"margin": {
+    },
+    "anchor": "centertop",
+    "margin": {
       "width": {
-      	"unit": "millimeter",
-      	"value": 0.1
+        "unit": "millimeter",
+        "value": 0.1
       },
       "height": {
-      	"unit": "millimeter",
-      	"value" 0.1
+        "unit": "millimeter",
+        "value" 0.1
       }
-  	}
+    }
   },
   "szhack": false,
-  "preview": true
+  "preview": true,
+  "interactive": false,
+  "language": "eng"
 }
 ```
-
-
-
-### metadata-basis
 
 This objects represents a metadata-basis
 
@@ -674,65 +701,11 @@ This objects represents a metadata-basis
 | language    | string  | Yes      | Language of the map               |
 | interactive | boolean | Yes      | Defines if the map is interactive |
 
-```json
-{
-  "id": 1,
-  "mapstyle": [
-    {
-      "name":"Here10k.xml",
-      "scale":16249
-    },
-    {
-      "name":"Here20k.xml",
-      "scale":27499
-    }
-  ],
-  "rotation": 0,
-  "copyright": {
-  	"font": {
-      "name": "Helvetica",
-      "size": {
-      	"unit": "millimeter",
-      	"value": 0.1
-      },
-      "color": {
-      	"R": 0,
-      	"G": 0,
-      	"B": 0
-      }
-  	},
-  	"anchor": "centertop",
-  	"margin": {
-      "width": {
-      	"unit": "millimeter",
-      	"value": 0.1
-      },
-      "height": {
-      	"unit": "millimeter",
-      	"value" 0.1
-      }
-  	}
-  },
-  "szhack": false,
-  "preview": true,
-  "interactive": false,
-  "language": "eng"
-}
-```
-
-
-
 ### metadata-multilang
 
 This object represents a metadata-multilang
 
 ##### Extends
-
-- metadata
-
-| Field     | Type            | Required | Description           |
-| --------- | --------------- | -------- | --------------------- |
-| languages | array of string | Yes      | Languages of the maps |
 
 ````json
 {
@@ -749,29 +722,29 @@ This object represents a metadata-multilang
   ],
   "rotation": 0,
   "copyright": {
-  	"font": {
+    "font": {
       "name": "Helvetica",
       "size": {
-      	"unit": "millimeter",
-      	"value": 0.1
+        "unit": "millimeter",
+        "value": 0.1
       },
       "color": {
-      	"R": 0,
-      	"G": 0,
-      	"B": 0
+        "R": 0,
+        "G": 0,
+        "B": 0
       }
-  	},
-  	"anchor": "centertop",
-  	"margin": {
+    },
+    "anchor": "centertop",
+    "margin": {
       "width": {
-      	"unit": "millimeter",
-      	"value": 0.1
+        "unit": "millimeter",
+        "value": 0.1
       },
       "height": {
-      	"unit": "millimeter",
-      	"value" 0.1
+        "unit": "millimeter",
+        "value" 0.1
       }
-  	}
+    }
   },
   "szhack": false,
   "preview": true,
@@ -784,19 +757,20 @@ This object represents a metadata-multilang
 }
 ````
 
+- metadata
 
+| Field     | Type            | Required | Description           |
+| --------- | --------------- | -------- | --------------------- |
+| languages | array of string | Yes      | Languages of the maps |
+
+<!-- For Slate -->
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 ### icon-label
-
-This object represents an icon-label
-
-| Field   | Type      | Required | Description                              |
-| ------- | --------- | -------- | ---------------------------------------- |
-| text    | string    | Yes      | Text that the label will contain         |
-| font    | font      | Yes      | Font that the label will use             |
-| textbox | textbox   | No       | Textbox that the text will be in         |
-| anchor  | alignment | Yes      | Defines the place where the label needs to align, **keep in mind this is the place where the label will bind on the icon!** |
-| margin  | dimension | No       | Offset/Margin from the icon. *Negative is on the label* |
 
 ```json
 {
@@ -827,20 +801,20 @@ This object represents an icon-label
 }
 ```
 
+This object represents an icon-label
 
+| Field   | Type      | Required | Description                              |
+| ------- | --------- | -------- | ---------------------------------------- |
+| text    | string    | Yes      | Text that the label will contain         |
+| font    | font      | Yes      | Font that the label will use             |
+| textbox | textbox   | No       | Textbox that the text will be in         |
+| anchor  | alignment | Yes      | Defines the place where the label needs to align, **keep in mind this is the place where the label will bind on the icon!** |
+| margin  | dimension | No       | Offset/Margin from the icon. *Negative is on the label* |
+
+<!-- For Slate -->
+<br/><br/><br/><br/><br/><br/><br/><br/>
 
 ### icon
-
-This object represents an icon based on SVG text
-
-| Field    | Type       | Required | Description                              |
-| -------- | ---------- | -------- | ---------------------------------------- |
-| source   | string     | Yes      | Source string of the icon, **Keep in mind this needs to be the source of an SVG** |
-| name     | string     | Yes      | Name of the label, *will be used in the POI-index* |
-| category | string     | No       | Category of the icon, *will be used in the POI-index* |
-| id       | integer    | Yes      | ID of the icon, needs to be unique, *will be used in the POI-index* |
-| coord    | coordinate | Yes      | Coordinate where the icon will be placed |
-| label    | icon-label | No       | Label that will be placed alongside the icon |
 
 ```json
 {
@@ -855,16 +829,18 @@ This object represents an icon based on SVG text
 }
 ```
 
+This object represents an icon based on SVG text
 
+| Field    | Type       | Required | Description                              |
+| -------- | ---------- | -------- | ---------------------------------------- |
+| source   | string     | Yes      | Source string of the icon, **Keep in mind this needs to be the source of an SVG** |
+| name     | string     | Yes      | Name of the label, *will be used in the POI-index* |
+| category | string     | No       | Category of the icon, *will be used in the POI-index* |
+| id       | integer    | Yes      | ID of the icon, needs to be unique, *will be used in the POI-index* |
+| coord    | coordinate | Yes      | Coordinate where the icon will be placed |
+| label    | icon-label | No       | Label that will be placed alongside the icon |
 
 ### paper
-
-This object represents a paper
-
-| Field | Type      | Required | Description                              |
-| ----- | --------- | -------- | ---------------------------------------- |
-| size  | dimension | Yes      | Defines the size of the paper            |
-| frame | line      | No       | Defines a frame that will be put around the map |
 
 ```json
 {
@@ -879,27 +855,17 @@ This object represents a paper
 }
 ```
 
+This object represents a paper
 
+| Field | Type      | Required | Description                              |
+| ----- | --------- | -------- | ---------------------------------------- |
+| size  | dimension | Yes      | Defines the size of the paper            |
+| frame | line      | No       | Defines a frame that will be put around the map |
+
+<!-- For Slate -->
+<br/>
 
 ### map
-
-This object represents a map
-
-| Field           | Type              | Required | Description                              |
-| --------------- | ----------------- | -------- | ---------------------------------------- |
-| meta            | object            | Yes      | Defines the metadata, can either be **"metadata-basis"**, **"metadata-multilang"** |
-| paper           | paper             | Yes      | Defines the paper the map will be on     |
-| scaleDefinition | object            | Yes      | Defines the scale, can either be "boundingBox", "scale", "fromPois" |
-| scalebar        | scalebar          | No       | Define the scalebar that will be put on the map |
-| northIndicator  | northIndicator    | No       | Define the north indicator that will be put on the map |
-| grid            | grid              | No       | Define a grid that will be put on the map |
-| vectorLayers    | array of string   | No       | Define Vectorlayer(s) that will be put on the map |
-| polylines       | array of polyline | No       | Define polyline(s) that will be put on the map |
-| polygons        | array of polygon  | No       | Define polygon(s) that will be put on the map |
-| icons           | array of icon     | No       | Define icon(s) that will be put on the map |
-| labels          | array of label    | No       | Define label(s) that will be put on the map |
-| output          | array of string   | Yes      | Set outputs that need to be generated, can either be "png", "pdf", "jpg", "svg", "eps", "bmp", "tif" |
-| index           | array of string   | No       | Which indexes should be generated, can either be "city", "street", "poi". **Keep in mind the array should contain unique items** |
 
 ```json
 {
@@ -1049,16 +1015,27 @@ This object represents a map
 }
 ```
 
+This object represents a map
+
+| Field           | Type              | Required | Description                              |
+| --------------- | ----------------- | -------- | ---------------------------------------- |
+| meta            | object            | Yes      | Defines the metadata, can either be **"metadata-basis"**, **"metadata-multilang"** |
+| paper           | paper             | Yes      | Defines the paper the map will be on     |
+| scaleDefinition | object            | Yes      | Defines the scale, can either be "boundingBox", "scale", "fromPois" |
+| scalebar        | scalebar          | No       | Define the scalebar that will be put on the map |
+| northIndicator  | northIndicator    | No       | Define the north indicator that will be put on the map |
+| grid            | grid              | No       | Define a grid that will be put on the map |
+| vectorLayers    | array of string   | No       | Define Vectorlayer(s) that will be put on the map |
+| polylines       | array of polyline | No       | Define polyline(s) that will be put on the map |
+| polygons        | array of polygon  | No       | Define polygon(s) that will be put on the map |
+| icons           | array of icon     | No       | Define icon(s) that will be put on the map |
+| labels          | array of label    | No       | Define label(s) that will be put on the map |
+| output          | array of string   | Yes      | Set outputs that need to be generated, can either be "png", "pdf", "jpg", "svg", "eps", "bmp", "tif" |
+| index           | array of string   | No       | Which indexes should be generated, can either be "city", "street", "poi". **Keep in mind the array should contain unique items** |
+
 ### job
 
-This object represents a job. *A job can contain multiple maps, as long as they have the unique IDs*
-
-| Field | Type         | Required | Description                              |
-| ----- | ------------ | -------- | ---------------------------------------- |
-| id    | integer      | Yes      | Unique Job ID.                           |
-| maps  | array of map | Yes      | Maps connected to this Job. *Minimum of 1 |
-
-```JSON
+```json
 {
   "id":912,
   "command":"generate",
@@ -1209,18 +1186,27 @@ This object represents a job. *A job can contain multiple maps, as long as they 
 }
 ```
 
-## response
+This object represents a job. *A job can contain multiple maps, as long as they have the unique IDs*
+
+| Field | Type         | Required | Description                              |
+| ----- | ------------ | -------- | ---------------------------------------- |
+| id    | integer      | Yes      | Unique Job ID.                           |
+| maps  | array of map | Yes      | Maps connected to this Job. *Minimum of 1 |
+
+<!--
+
+## Response
 
 ### info
 
-This object represents an info data response 
+This object represents an info data response
 
 | Field   | Type   | Required | Description                              |
 | ------- | ------ | -------- | ---------------------------------------- |
 | state   | string | Yes      | State of the job, can either be: "parsing", "calculating" or "finishing" |
 | message | string | Yes      | Message that explain what the job is doing |
 
-```JSON
+```json
 {
   "state": "queued",
   "message": "Job got queued"
@@ -1237,7 +1223,7 @@ This object represents an error data response
 | code    | integer | Yes      | Error code                           |
 | message | string  | Yes      | Error message                        |
 
-```JSON
+```json
 {
   "state": "failed",
   "code": 400,
@@ -1245,7 +1231,7 @@ This object represents an error data response
 }
 ```
 
-### done  
+### done
 
 This object represents a done data response
 
@@ -1255,7 +1241,7 @@ This object represents a done data response
 | url     | string | Yes      | Download url of the output             |
 | preview | string | No       | Preview image of the map. *PNG format* |
 
-```JSON
+```json
 {
   "state": "done",
   "url": "http://example.com/archive.zip",
@@ -1271,7 +1257,7 @@ This object represents a cancel data response
 | ----- | ------ | -------- | ---------------- |
 | state | string | Yes      | Is always cancel |
 
-```JSON
+```json
 {
   "state": "cancel"
 }
@@ -1286,7 +1272,7 @@ This object represents a response
 | id    | integer                            | Yes      | Job ID                      |
 | data  | oneOf: "error, info, done, cancel" | Yes      | Data from the response type |
 
-```JSON
+```json
 {
   "id": 10,
   "state": "done",
@@ -1297,7 +1283,8 @@ This object represents a response
 
 ## General information
 
-### Polylines 
+### Polylines
+
 Polylines are encoded with the google polyline algorithm. Information about how to encode the polylines can be found [here](https://developers.google.com/maps/documentation/utilities/polylinealgorithm).
 You can test the output of your program [here](https://developers.google.com/maps/documentation/utilities/polylineutility).
 
@@ -1545,3 +1532,5 @@ You can test the output of your program [here](https://developers.google.com/map
 | Balto-Medium                  |
 | GillSansMTPro-Book            |
 | MyriadPro-Regular             |
+
+-->

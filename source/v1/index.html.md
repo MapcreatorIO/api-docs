@@ -18,21 +18,6 @@ Welcome to the API documentation for Maps4News.
 
 Our API allows you to manage everything about your Maps4News account and your organisation. As well as generate Maps.
 
-## API Wrapper
-
-> You can install the library using:
-
-```
-npm install @mapcreator/maps4news
-```
-
-If you are using JavaScript to develop your app then you are in luck.
-We have created a query builder-like library that is able to do everything our API offers. It even does the Oauth login for you, in redirect, popup or password flow.
-
-The library is freely available on [github](https://github.com/MapCreatorEU/api-wrapper) and [npm](https://www.npmjs.com/package/@mapcreator/maps4news).
-
-More information about the wrapper can be found on [this page](wrapper.html)
-
 ## Authentication
 
 > To authorize, use this code:
@@ -243,6 +228,17 @@ GET /v1/jobs/1/revisions/last
 To get the last revision for a job, you can use the `last` keyword.
 
 # Wrapper
+
+> You can install the library using:
+
+```
+npm install @mapcreator/maps4news
+```
+
+If you are using JavaScript to develop your app then you are in luck.
+We have created a query builder-like library that is able to do everything our API offers. It even does the Oauth login for you, in redirect, popup or password flow.
+
+The library is freely available on [github](https://github.com/MapCreatorEU/api-wrapper) and [npm](https://www.npmjs.com/package/@mapcreator/maps4news).
 
 Have a look at the Wrapper's [ESDoc API documentation](/wrapper/index.html).
 
@@ -602,67 +598,129 @@ The `search` method is an extension of `list`. This means that `.search({})` is 
 
 ## Building a Map
 
-```javascript--wrapper
-const api = window.api;
-```
+### Prerequisites:
+
+ - You have an authenticated Wrapper instance or Token that you can use for authentication.
+
+### Notes:
+
+ - For JS this example uses our Wrapper
+ - For PHP this example uses `GuzzleHttp`
+ - We're gonna build the map defined in [this json file](/assets/map.json)
 
 To build a map via our system, you first need to create a few resources.
 
-<br/>
-
 ```javascript--wrapper
+const api = new Maps4News(token);
+
+// 1. Job
 const job = await api.jobs.new({
   jobTypeId: 1,
-  title: "My Map"
+  title: 'My Map'
 }).save();
-```
 
-```php
-// TODO
-```
+// 2. Job Revision
+import * as mapObject from './map.json'; // NodeJS
 
-First a [`Job`](api/index.html#JobCreateRequest). A Job is a project on the Maps4News Platform.
-
-<br/><br/><br/><br/>
-
-```javascript--wrapper
 const revision = await job.revisions.new({
-  languageCode: "eng",
+  languageCode: 'eng',
   mapstyleSetId: 1
 }).save(mapObject);
+
+// 3. Building
+const build = await revision.build('http://example.com/callback');
+
+// 4. Job Result
+const result = await revision.result();
+
+// 5. Getting the preview
+const preview = await result.downloadPreview();
+
+window.location = preview;
 ```
 
 ```php
-// TODO
+<?php
+
+$http = new GuzzleHttp\Client([
+    'base_uri' => 'https://api.maps4news.com',
+    'headers' => [
+        'Authorization' => "Bearer $token",
+        'Content-Type' => 'application/json',
+        'Accept' => 'application/json',
+    ],
+]);
+
+// 1. Job
+$jobResponse = $http->post('v1/jobs', [
+    GuzzleHttp\RequestOptions::JSON => [
+        'job_type_id' => 1, // Annotation Map
+        'title' => 'My Map',
+    ],
+]);
+
+$job = json_decode($jobResponse->getBody());
+
+// 2. Job Revision
+$mapObject = file_get_contents('./map.json'); // As a string
+
+$revisionResponse = $http->post("/v1/jobs/$job->id/revisions", [
+    GuzzleHttp\RequestOptions::JSON => [
+        'language_code' => 'eng',
+        'mapstyle_set_id' => 60, // Here Mapstyle
+        'object' => $mapObject,
+    ],
+]);
+
+$revision = json_decode($revisionResponse->getBody());
+
+// 3. Building
+$buildResponse = $http->post("/v1/jobs/$job->id/revisions/$revision->revision/build");
+
+$build = json_decode($buildResponse->getBody());
+
+// 4. Job Result
+$resultResponse = $http->get("/v1/jobs/$job->id/revisions/$revision->revision/result");
+
+$result = json_decode($resultResponse->getBody());
+
+// 5. Getting the Preview
+$previewResponse = $http->get("/v1/jobs/$job->id/revisions/$revision->revision/result/preview");
+
+header('Content-Type: image/png');
+echo $previewResponse->getBody();
 ```
 
-Second a [`Job Revision`](api/index.html#JobRevisionCreateRequest). A Revision is a point-in-time that the user decided to save his/her current progress in designing their map.
+### Steps
 
-A map object must be given to each revision. Revisions can not be updated, each save will result in a new revision.
+ - 0. Let's setup the basis for our application.
 
+<br/>
+
+ - 1. Firstly we are gonna create a [`Job`](api/index.html#JobCreateRequest) instance. A Job is a project on the Maps4News Platform.<br/>
+We're gonna create an Annotation Map (`job_type_id`) which is a normal map with icons on it, and we're also giving out our map a title. 
+
+<br/>
+
+ - 2. Second a [`Job Revision`](api/index.html#JobRevisionCreateRequest). A Revision is a point-in-time that the user decided to save his/her current progress in designing their map.<br/>
+The Revision requires us to give it a `language_code`, these are 3 character string (eng, ger, ita, dut, etc.) as well a `mapstyle_set_id` and the map json as a string.<br/><br/>
+A map object must be given to each revision. Revisions can not be updated, each save will result in a new revision.<br/>
 Details about how to build a map object can be found on the [map object page](dispatcher.html).
 
 <br/>
 
-```javascript--wrapper
-await revision.build("http://example.com/callback");
-```
-
-```php
-// TODO
-```
-
-Lastly, we can queue a build of your map. This will create a `JobResult` resource for that revision.
+ - 3. If your map object was valid and the revision was created we can queue a build of your map. This will create a `JobResult` resource for that revision.
 
 <br/>
 
-```javascript--wrapper
-const result = await revision.result();
-```
+ - 4. You can access your result via the `result` method on your revision.<br/>
+Expect your result to be queued or processing if you get your result directly after queueing a build.<br/>
+It generally takes a few seconds to a few minutes to generate a map.
 
-```php
-// TODO
-```
+ <br/>
 
-You can access your result via the `result` method on your revision. Expect your result to be queued or processing if you get your result directly after queueing a build. It generally takes a few seconds to a few minutes to generate a map.
+ - 5. The last step in this example is to get the preview image for the map. The API will return an `image/png` for all previews.
 
+### The Final Result
+
+![Map Preview](/images/map_preview.png)
