@@ -4,7 +4,6 @@
   <head>
     <meta charset="UTF-8">
     <!-- TODO Remove -->
-    <meta http-equiv="refresh" content="0;url=https://api.beta.maps4news.com/docs" />
     <title>Maps4News Api OpenAPI Definition</title>
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700"
@@ -37,7 +36,7 @@
       window.onload = function () {
         // Build a system
         const ui = SwaggerUIBundle({
-          url: "https://api.beta.maps4news.com/docs/assets/api-docs.json", // TODO change to live
+          url: "https://api.beta.maps4news.com/docs", // TODO change to live
           dom_id: '#swagger-ui',
           oauth2RedirectUrl: `${document.location.origin}/v1/api/oauth2-redirect.html`,
           presets: [

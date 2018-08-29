@@ -103,7 +103,7 @@ The Maps4News API is an OAuth2 API. We support implicit and password flows.
 
 To register an OAuth Client or Personal Access Token, please [log into the API](https://api.beta.maps4news.com) register one via your account settings.
 
-Have a look at our [OpenAPI spec](https://api.beta.maps4news.com/docs), the spec contains all the endpoints, info about how resources look and what each endpoint requires you to submit.
+Have a look at our [OpenAPI spec](/v1/api), the spec contains all the endpoints, info about how resources look and what each endpoint requires you to submit.
 
 To Log in and try it out hit the "Try out" button and use `client_id` **2**.
 
