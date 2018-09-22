@@ -136,6 +136,71 @@ All JSON responses from the API is wrapped in a base object.
 
 Be sure to include an `Accept: application/json` header, otherwise errors like `401`, `403` & `404` will either return HTML or redirect you to the login page.
 
+## Headers
+
+### Exposed Headers
+
+- `Content-Type`(`application/json` or the filetype, e.g. `image/png`)
+- `Content-Disposition` (only for files, defaults to `attachment; filename="filename.ext"`)
+
+### For Pagination
+See [pagination](#pagination)
+
+- `X-Paginate-Total`
+- `X-Paginate-Pages`
+- `X-Paginate-Offset`
+
+### For HTTP Caching we Expose
+
+- `Cache-Control`
+- `Last-Modified`
+- `ETag` [(weak)](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
+
+> Create Route
+
+```
+/v1/users
+```
+> Get Route
+
+```
+/v1/users/1
+```
+
+All returned model resources have an `ETag` and `Last-Modified` header.
+
+`ETag` are returned from get, create & update requests.
+Because the ETags are weak they can be used on other routes as well.
+
+For example, when creating a new resource, the API will return an `ETag`,
+this `ETag` can be used on the get route to check if the resource has been modified since creating it.
+
+### We Also Expose CORS Headers
+
+- `Access-Control-Allow-Origin` (default `*`)
+- `Access-Control-Allow-Methods`
+- `Access-Control-Allow-Headers`
+- `Access-Control-Expose-Headers`
+- `Access-Control-Max-Age`
+
+### Accepted Headers
+
+- `Authorization`
+- `Accept`
+- `Content-Type`
+
+### For Pagination
+See [pagination](#pagination)
+
+- `X-Page`
+- `X-Per-Page`
+- `X-Offset`
+
+### For HTTP Caching
+
+- `If-Match`
+- `If-Modified-Since`
+
 ## Query Parameters
 
 The API has a few query parameters available that you can use to help find the resources you need.
@@ -147,7 +212,7 @@ All three of these query parameters are only available on listing endpoints, so 
 > As Query Parameter
 
 ```
-?page=1&per_page=50
+?page=1&per_page=50&offset=0
 ```
 
 > As Header
@@ -155,13 +220,18 @@ All three of these query parameters are only available on listing endpoints, so 
 ```
 X-Page: 1
 X-Per-Page: 50
+X-Offset: 0
 ```
 
 By default the API returns 12 items per page and defaults to page 1.
 
 The number of items per page can be increased to a maximum of 50 items.
 
-<br/><br/><br/><br/><br/><br/>
+### Offset
+
+`offset` is a special parameter within our pagination system, the `offset` will remove the first `n` items from the list you are querying. `offset` can be used to work around getting duplicate data.
+
+So, for example: if the list has 600 items and the `offset` is set to 100, the `X-Paginate-Total` will report 500 items, other headers like `X-Paginate-Pages` will also be calculated from the new total.
 
 ### Sorting
 
