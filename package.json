@@ -2,7 +2,8 @@
   "name": "api-docs",
   "version": "1.0.0",
   "scripts": {
-    "compile-docs-wrapper": "npx esdoc"
+    "compile-docs-wrapper": "npx esdoc",
+    "generate-model-tables": "node scripts/generateTables.js"
   },
   "dependencies": {
     "@mapcreator/maps4news": "^1.4.22",

@@ -9,6 +9,9 @@ toc_footers:
   - <a href='https://api.maps4news.com/register'>Sign up for Maps4News</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
+includes:
+  - models
+
 search: true
 ---
 
@@ -266,7 +269,7 @@ So, for example: if the list has 600 items and the `offset` is set to 100, the `
 
 The API supports sorting ascending or descending sorting on multiple columns (separated by a comma) on the resources.
 
-**Sortable columns are whitelisted inside the API, there is currently no documentation on what columns are whitelisted**
+**Sortable columns are whitelisted inside the API, look in the model list below for supported columns**
 
 ### Searching
 
