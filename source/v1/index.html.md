@@ -141,7 +141,7 @@ Be sure to include an `Accept: application/json` header, otherwise errors like `
 ### Exposed Headers
 
 - `Content-Type`(`application/json` or the filetype, e.g. `image/png`)
-- `Content-Disposition` (only for files, defaults to `attachment; filename="filename.ext"`)
+- `Content-Disposition` (only for files, defaults to `inline`)
 
 ### For Pagination
 See [pagination](#pagination)
@@ -161,7 +161,7 @@ See [pagination](#pagination)
 ```
 /v1/users
 ```
-> Get Route
+> Update Route
 
 ```
 /v1/users/1
@@ -169,11 +169,10 @@ See [pagination](#pagination)
 
 All returned model resources have an `ETag` and `Last-Modified` header.
 
-`ETag` are returned from get, create & update requests.
-Because the ETags are weak they can be used on other routes as well.
+`ETag` headers are returned from GET, Create & Update requests.
+Because the ETags are weak they can also be used on other routes.
 
-For example, when creating a new resource, the API will return an `ETag`,
-this `ETag` can be used on the get route to check if the resource has been modified since creating it.
+For example, when getting a resource the API will return a `ETag` header, the value of the `ETag` header can be used on the update route prevent [the lost update problem](https://www.morpheusdata.com/blog/2015-02-21-lost-update-db).
 
 ### We Also Expose CORS Headers
 
@@ -186,7 +185,7 @@ this `ETag` can be used on the get route to check if the resource has been modif
 ### Accepted Headers
 
 - `Authorization`
-- `Accept`
+- `Accept` (should be set to `application/json` for all API requests)
 - `Content-Type`
 
 ### For Pagination
@@ -196,10 +195,14 @@ See [pagination](#pagination)
 - `X-Per-Page`
 - `X-Offset`
 
-### For HTTP Caching
+### For Midair Collision Prevention
 
-- `If-Match`
-- `If-Modified-Since`
+- [`If-Match`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match)
+- [`If-Unmodified-Since`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Unmodified-Since)
+
+We follow the standard as described on mozilla developer network
+
+If you submit any of these headers the API will assume you only want to update a resource when the header condition is met, omit these if you do not care about preventing [the lost update problem](https://www.morpheusdata.com/blog/2015-02-21-lost-update-db)
 
 ## Query Parameters
 
