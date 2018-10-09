@@ -138,8 +138,8 @@ To Log in and try it out hit the "Try out" button.
 {
   "success": false,
   "error": {
-    "type": "HttpNotFoundException",
-    "message": "Page Not Found",
+    "type": "ValidationException",
+    "message": "Input data failed to pass validation",
     "validation_errors": {
       "attribute": "validation error for the attribute"
     }
@@ -152,7 +152,7 @@ All JSON responses from the API is wrapped in a base object.
 Be sure to include an `Accept: application/json` header, otherwise errors like `401`, `403` & `404` will either return HTML or redirect you to the login page.
 
 <aside class="warning">
-The current version (1.4.2) returns `validation_errors` as an array of string, this behavior will change the one described on the right in the next version 1.4.3. (no release ETA)
+The current version (1.4.2) returns `validation_errors` as an array of strings, this behavior will change the one described on the right in the next version 1.4.3. (no release ETA)
 </aside>
 
 
@@ -170,7 +170,7 @@ See [pagination](#pagination)
 - `X-Paginate-Pages`
 - `X-Paginate-Offset`
 
-### For HTTP Caching we Expose
+### For HTTP Caching
 
 - `Cache-Control`
 - `Last-Modified`
@@ -194,7 +194,7 @@ Because the ETags are weak they can also be used on other routes.
 
 For example, when getting a resource the API will return a `ETag` header, the value of the `ETag` header can be used on the update route prevent [the lost update problem](https://www.morpheusdata.com/blog/2015-02-21-lost-update-db).
 
-### We Also Expose CORS Headers
+### Exposed CORS Headers
 
 - `Access-Control-Allow-Origin` (default `*`)
 - `Access-Control-Allow-Methods`
@@ -790,15 +790,20 @@ echo $previewResponse->getBody();
 
 <br/>
 
- - 1. Firstly we are gonna create a [`Job`](api/index.html#JobCreateRequest) instance. A Job is a project on the Maps4News Platform.<br/>
+ - 1. Firstly we are gonna create a `Job` instance. A Job is a project on the Maps4News platform.<br/>
 We're gonna create an Annotation Map (`job_type_id`) which is a normal map with icons on it, and we're also giving out our map a title. 
 
 <br/>
 
- - 2. Second a [`Job Revision`](api/index.html#JobRevisionCreateRequest). A Revision is a point-in-time that the user decided to save his/her current progress in designing their map.<br/>
-The Revision requires us to give it a `language_code`, these are 3 character string (eng, ger, ita, dut, etc.) as well a `mapstyle_set_id` and the map json as a string.<br/><br/>
-A map object must be given to each revision. Revisions can not be updated, each save will result in a new revision.<br/>
-Details about how to build a map object can be found on the [map object page](dispatcher.html).
+ - 2. Second a `Job Revision`. A Revision is a point-in-time that the user decided to save his/her current progress in designing their map.
+
+A `Revision` requires us to give it a `language_code`, these are 3 character strings, (eng, ger, ita, dut, etc.) as well a `mapstyle_set_id` and the map json as a string.
+
+(A list of available mapstyle sets can be gotten from `/users/me/mapstyle-sets`)
+
+A map object must be given to each revision. Revisions can not be updated, each save will result in a new revision.
+
+Details about how to make a map object can be found on the [map object page](dispatcher.html).
 
 <br/>
 
@@ -806,7 +811,7 @@ Details about how to build a map object can be found on the [map object page](di
 
 <br/>
 
- - 4. You can access your result via the `result` method on your revision.<br/>
+ - 4. You can access your result via the `result` method on the revision.<br/>
 Expect your result to be queued or processing if you get your result directly after queueing a build.<br/>
 It generally takes a few seconds to a few minutes to generate a map.
 
