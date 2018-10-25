@@ -210,6 +210,7 @@ For example, when getting a resource the API will return a `ETag` header, the va
 - `Authorization`
 - `Accept` (should be set to `application/json` for all API requests)
 - `Content-Type`
+- `X-No-CDN-Redirect` (Tells the API to not redirect the user to the CDN but instead fetch the item itself, default `false`)
 
 ### For Pagination
 See [pagination](#pagination)
