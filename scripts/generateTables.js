@@ -2,8 +2,8 @@ const https = require('https');
 const fs = require('fs');
 
 function downloadDocs () {
-  return new Promise((resolve) => {
-    const docsUrl = "https://api.bleeding.maps4news.com/docs";
+  return new Promise((resolve, reject) => {
+    const docsUrl = 'https://api.beta.maps4news.com/docs';
 
     https.get(docsUrl, function (res) {
       let body = '';
@@ -65,7 +65,7 @@ function generateTables (models) {
   return string.trimRight();
 }
 
-function writeFile(content) {
+function writeFile (content) {
   fs.writeFileSync(`${__dirname}/../source/includes/_models.md`, content);
 }
 

@@ -144,8 +144,36 @@ To Log in and try it out hit the "Try out" button.
     "type": "ValidationException",
     "message": "Input data failed to pass validation",
     "validation_errors": {
-      "attribute": "validation error for the attribute"
+      "attribute": [
+        "validation error for the attribute"
+      ]
     }
+  }
+}
+```
+
+> For Error Responses With JSON Schema Errors (Current only used when creating a Job Revision)
+
+```json
+{
+  "success": false,
+  "error": {
+    "type": "ValidationException",
+    "message": "Input data failed to pass validation",
+    "validation_errors": {
+      "attribute": [
+        "validation error for the attribute"
+      ]
+    },
+    "schema_errors": [
+      {
+        "property": "data.meta",
+        "pointer": "/data/meta",
+        "message": "The propery meta is required",
+        "constraint": "required",
+        "context": 1
+      }
+    ]
   }
 }
 ```
@@ -155,7 +183,7 @@ All JSON responses from the API is wrapped in a base object.
 Be sure to include an `Accept: application/json` header, otherwise errors like `401`, `403` & `404` will either return HTML or redirect you to the login page.
 
 <aside class="warning">
-The current version (1.4.2) returns `validation_errors` as an array of strings, this behavior will change the one described on the right in the next version 1.4.3. (no release ETA)
+The current version (1.4.2) returns `validation_errors` as an array of strings, this behavior will change the one described on the right in the next version 1.4.3. (there is currently no release ETA). The new behavior is available on beta.
 </aside>
 
 
