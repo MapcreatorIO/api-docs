@@ -112,7 +112,7 @@ To Log in and try it out hit the "Try out" button.
 
 ## Return Data
 
-> For Success Responses
+> For success responses
 
 ```json
 {
@@ -123,7 +123,7 @@ To Log in and try it out hit the "Try out" button.
 }
 ```
 
-> For Error Responses
+> For error responses
 
 ```json
 {
@@ -135,7 +135,7 @@ To Log in and try it out hit the "Try out" button.
 }
 ```
 
-> For Error Responses With Validation Errors
+> For error responses with validation errors
 
 ```json
 {
@@ -152,7 +152,7 @@ To Log in and try it out hit the "Try out" button.
 }
 ```
 
-> For Error Responses With JSON Schema Errors (Current only used when creating a Job Revision)
+> For error responses with JSON schema errors (Current only used when creating a Job Revision)
 
 ```json
 {
@@ -285,7 +285,7 @@ So, for example: if the list has 600 items and the `offset` is set to 100, the `
 
 ### Sorting
 
-> Sort ID Descending and Name Ascending
+> Sort ID descending and name ascending
 
 ```
 ?sort=-id,name
@@ -297,7 +297,7 @@ The API supports sorting ascending or descending sorting on multiple columns (se
 
 ### Searching
 
-> Search for name LIKE "Kevin" and company That Ends With "4News"
+> Search for name LIKE "Kevin" and company that ends with "4News"
 
 ```
 ?search[name]=Kevin&search[company]=$:4News
@@ -546,11 +546,13 @@ const colors = await api.users.select('me').colors.list();
 
 The wrapper exposes relations which return proxies.
 These proxies can be used to either build a route to a resource or to fetch resources.
+
 This means that `api.users.get('me')` is the same as calling the route `/v1/users/me`.
+
 All proxies expose the methods `new`, `list` and `lister`.
 Most proxies expose the methods `select` and `get`.
 
-<br/><br/>
+Async methods return a `Promise` this means that both `then/catch` and `await/async` syntax are supported.
 
 ```js
 // Case translation
@@ -565,8 +567,6 @@ test.fooBarBaz === 123; // true
 
 The wrapper will transform snake_case named variables returned from the api into camelCase named variables.
 This means that for example `place_name` will be transformed into `placeName`.
-
-Async methods return a `Promise` this means that both `then/catch` and `await/async` syntax are supported.
 
 ## Getting a resource
 
@@ -589,8 +589,9 @@ api.users.select('me').mapstyleSets.list().then(function(sets) {
 ```
 
 Resources are bound to the base api class by default. Resources can be fetched in two ways;
-by selecting them (`.select`) or by fetching them (`.get`). Selecting them will only set the
-object's id to its properties. Fetching a resource returns a `Promise` that will resolve with the requested resource.
+by selecting them (`.select`) or by fetching them (`.get`).
+
+Selecting them will only set the object's id to its properties. Fetching a resource returns a `Promise` that will resolve with the requested resource.
 
 Selection is only useful as a stepping stone to related resources that can be easily obtained using the id of the parent.
 
@@ -652,7 +653,7 @@ function parsePages(page) {
 
   if (page.hasNext) {
     console.log('Grabbing page ' + (page.page + 1));
-    page.next().then(parsePage);
+    page.next().then(parsePages);
   }
 }
 
