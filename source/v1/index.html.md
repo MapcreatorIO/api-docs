@@ -43,7 +43,7 @@ api.users.get('me').then(console.log);
 ```
 
 ```php
-This example uses the guzzlehttp package from composer.
+This example uses the guzzlehttp package from Composer.
 
 <?php
 
@@ -104,9 +104,9 @@ The Maps4News API is an OAuth2 API. We support implicit and password flows.
 
 # API
 
-To register an OAuth Client or Personal Access Token, please [log into the API](https://api.beta.maps4news.com) register one via your account settings.
+To register an OAuth Client or Personal Access Token, please [log into the API](https://api.beta.maps4news.com) and register one via your account settings.
 
-Have a look at our [OpenAPI spec](/v1/api), the spec contains all the endpoints, info about how resources look and what each endpoint requires you to submit.
+Have a look at our [OpenAPI spec](/v1/api), the spec contains all the endpoints & info about how resources look and what each endpoint requires you to submit.
 
 To Log in and try it out hit the "Try out" button.
 
@@ -152,7 +152,7 @@ To Log in and try it out hit the "Try out" button.
 }
 ```
 
-> For error responses with JSON schema errors (Current only used when creating a Job Revision)
+> For error responses with JSON schema errors (current only used when creating a Job Revision)
 
 ```json
 {
@@ -178,9 +178,9 @@ To Log in and try it out hit the "Try out" button.
 }
 ```
 
-All JSON responses from the API is wrapped in a base object.
+All JSON responses from the API are wrapped in a base object.
 
-Be sure to include an `Accept: application/json` header, otherwise errors like `401`, `403` & `404` will either return HTML or redirect you to the login page.
+Be sure to include an `Accept: application/json` header, otherwise, errors like `401`, `403` & `404` will either return HTML or redirect you to the login page.
 
 ## Headers
 
@@ -215,10 +215,10 @@ See [pagination](#pagination)
 
 All returned model resources have an `ETag` and `Last-Modified` header.
 
-`ETag` headers are returned from GET, Create & Update requests.
+`ETag` headers are returned from Get, Create & Update requests.
 Because the ETags are weak they can also be used on other routes.
 
-For example, when getting a resource the API will return a `ETag` header, the value of the `ETag` header can be used on the update route prevent [the lost update problem](https://www.morpheusdata.com/blog/2015-02-21-lost-update-db).
+For example, when getting a resource the API will return an `ETag` header, the value of that `ETag` header can be used on the update route prevent the [lost update problem](https://www.morpheusdata.com/blog/2015-02-21-lost-update-db).
 
 ### Exposed CORS Headers
 
@@ -233,7 +233,7 @@ For example, when getting a resource the API will return a `ETag` header, the va
 - `Authorization`
 - `Accept` (should be set to `application/json` for all API requests)
 - `Content-Type`
-- `X-No-CDN-Redirect` (Tells the API to not redirect the user to the CDN but instead fetch the item itself, default `false`)
+- `X-No-CDN-Redirect` (tells the API to not redirect the user to the CDN but instead fetch the item itself, default `false`)
 
 ### For Pagination
 See [pagination](#pagination)
@@ -247,15 +247,15 @@ See [pagination](#pagination)
 - [`If-Match`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match)
 - [`If-Unmodified-Since`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Unmodified-Since)
 
-We follow the standard as described on mozilla developer network
+We follow the standard as described on the Mozilla Developer Network.
 
-If you submit any of these headers the API will assume you only want to update a resource when the header condition is met, omit these if you do not care about preventing [the lost update problem](https://www.morpheusdata.com/blog/2015-02-21-lost-update-db)
+If you submit any of these headers the API will assume you only want to update a resource when the header condition is met, omit these if you do not care about preventing the [lost update problem](https://www.morpheusdata.com/blog/2015-02-21-lost-update-db)
 
 ## Query Parameters
 
 The API has a few query parameters available that you can use to help find the resources you need.
 
-All three of these query parameters are only available on listing endpoints, so endpoints that return an array of items.
+All of these query parameters are only available on listing endpoints, so endpoints that return an array of items.
 
 ### Pagination
 
@@ -273,7 +273,7 @@ X-Per-Page: 50
 X-Offset: 0
 ```
 
-By default the API returns 12 items per page and defaults to page 1.
+By default, the API returns 12 items per page and defaults to page 1.
 
 The number of items per page can be increased to a maximum of 50 items.
 
@@ -305,7 +305,7 @@ The API supports sorting ascending or descending sorting on multiple columns (se
 
 Searching can be done on multiple columns, we use the URL array syntax for this.
 
-The basic syntax is `operator:value`, so: `=:Maps4News`
+The basic syntax is `operator:value`, so: `=:4News`
 
 **The same is for searchable columns, these are whitelisted per resource**
 
@@ -323,13 +323,13 @@ The available operators are:
 
 ## Keywords
 
-There are a few keywords throughout the API that you can use in the url as shortcuts to certain resources.
+There are a few keywords throughout the API that you can use in the URL as shortcuts to certain resources.
 
 ```
 GET /v1/users/me
 ```
 
-For example, you can use `me` as an keyword for a user. This will return the resource of the logged in user.
+For example, you can use `me` as a keyword for a user. This will return the resource of the user that that is associated with the token used to make the request.
 
 <br/>
 
@@ -356,7 +356,7 @@ npm install @mapcreator/maps4news
 ```
 
 If you are using JavaScript to develop your app then you are in luck.
-We have created a query builder-like library that is able to do everything our API offers. It even does the Oauth login for you, in redirect, popup or password flow.
+We have created a query builder-like library that is able to do everything our API offers. It even does the OAuth login for you, in redirect, popup or password flow.
 
 The library is freely available on [github](https://github.com/MapCreatorEU/api-wrapper) and [npm](https://www.npmjs.com/package/@mapcreator/maps4news).
 
@@ -420,9 +420,8 @@ You can also include the wrapper via a script tag in your html file.
 ## Authentication
 
 Authentication is done through OAuth. This library provides multiple OAuth flow
-implementations for authentication. A client id can be obtained through a support
-ticket but this is planned to change in the near future. The client will first
-check if any tokens can be found in the cache before requiring authentication.
+implementations for authentication. 
+The client will first check if any tokens can be found in the cache before requiring authentication.
 If one can be found the `api.authenticate()` method will instantly resolve without
 any side-effects. The variable `api.authenticated` will be set to true if a token
 has been found and is still valid.
