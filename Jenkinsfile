@@ -17,6 +17,7 @@ node('node') {
   if (BRANCH_NAME in ['master']) {
     stage('deploy') {
       sh 'aws s3 sync build/ "s3://docs.beta.maps4news.com"'
+      sh 'invalidate-file --path="/*" --id="E33W2FGWYKH1FJ" --reference="jenkins"'
     }
   }
 
