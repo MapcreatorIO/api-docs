@@ -28,7 +28,7 @@ This object represents a wgsCoordinate
 
 ```json
 {
-  "coordSys": "wgs"
+  "coordSys": "wgs",
   "lat": 35.006605,
   "long": 138.978468
 }
@@ -343,7 +343,7 @@ This object represents a label
 <!-- For Slate -->
 <br/><br/><br/><br/>
 
-### scalebar
+### scaleBar
 
 ```json
 {
@@ -351,7 +351,7 @@ This object represents a label
     "unit": "millimeter",
     "value": 0.1
   },
-  "fontname": "Helvetica",
+  "fontName": "Helvetica",
   "type": "metric",
   "margin": {
     "width": {
@@ -367,14 +367,14 @@ This object represents a label
 }
 ```
 
-This object represents a scalebar
+This object represents a scaleBar
 
 | Field    | Type      | Required | Description                              |
 | -------- | --------- | -------- | ---------------------------------------- |
-| size     | size      | Yes      | Size of the scalebar                     |
-| fontname | string    | Yes      | Name of the font that the scalebar will use |
-| type     | string    | Yes      | Type of scalebar, can either be "metric" or "imperial" |
-| margin   | dimension | No       | Offset/Margin of the scalebar            |
+| size     | size      | Yes      | Size of the scaleBar                     |
+| fontName | string    | Yes      | Name of the font that the scaleBar will use |
+| type     | string    | Yes      | Type of scaleBar, can either be "metric" or "imperial" |
+| margin   | dimension | No       | Offset/Margin of the scaleBar            |
 | anchor   | alignment | Yes      | Anchor on the map                        |
 
 <!-- For Slate -->
@@ -567,7 +567,7 @@ This objects represents a mapstyle
     },
     "height": {
       "unit": "millimeter",
-      "value" 0.1
+      "value": 0.1
     }
   }
 }
@@ -592,12 +592,12 @@ This object represents a copyright box
   "id": 1,
   "mapstyle": [
     {
-      "name":"Here10k.xml",
-      "scale":16249
+      "name": "Here10k.xml",
+      "scale": 16249
     },
     {
-      "name":"Here20k.xml",
-      "scale":27499
+      "name": "Here20k.xml",
+      "scale": 27499
     }
   ],
   "rotation": 0,
@@ -622,7 +622,7 @@ This object represents a copyright box
       },
       "height": {
         "unit": "millimeter",
-        "value" 0.1
+        "value": 0.1
       }
     }
   },
@@ -649,12 +649,12 @@ This object represents metadata
   "id": 1,
   "mapstyle": [
     {
-      "name":"Here10k.xml",
-      "scale":16249
+      "name": "Here10k.xml",
+      "scale": 16249
     },
     {
-      "name":"Here20k.xml",
-      "scale":27499
+      "name": "Here20k.xml",
+      "scale": 27499
     }
   ],
   "rotation": 0,
@@ -679,7 +679,7 @@ This object represents metadata
       },
       "height": {
         "unit": "millimeter",
-        "value" 0.1
+        "value": 0.1
       }
     }
   },
@@ -712,12 +712,12 @@ This object represents a metadata-multilang
   "id": 1,
   "mapstyle": [
     {
-      "name":"Here10k.xml",
-      "scale":16249
+      "name": "Here10k.xml",
+      "scale": 16249
     },
     {
-      "name":"Here20k.xml",
-      "scale":27499
+      "name": "Here20k.xml",
+      "scale": 27499
     }
   ],
   "rotation": 0,
@@ -742,7 +742,7 @@ This object represents a metadata-multilang
       },
       "height": {
         "unit": "millimeter",
-        "value" 0.1
+        "value": 0.1
       }
     }
   },
@@ -869,145 +869,145 @@ This object represents a paper
 
 ```json
 {
-  "id":46369,
-  "command":"generate",
-  "maps":[
+  "id": 46369,
+  "command": "generate",
+  "maps": [
     {
-      "meta":{
-        "id":46369,
-        "mapstyle":[
+      "meta": {
+        "id": 46369,
+        "mapstyle": [
           {
-            "name":"Here10k.xml",
-            "scale":16249
+            "name": "Here10k.xml",
+            "scale": 16249
           },
           {
-            "name":"Here20k.xml",
-            "scale":27499
+            "name": "Here20k.xml",
+            "scale": 27499
           },
           {
-            "name":"Here40k.xml",
-            "scale":47499
+            "name": "Here40k.xml",
+            "scale": 47499
           },
           {
-            "name":"Here75k.xml",
-            "scale":92499
+            "name": "Here75k.xml",
+            "scale": 92499
           },
           {
-            "name":"Here150k.xml",
-            "scale":177499
+            "name": "Here150k.xml",
+            "scale": 177499
           },
           {
-            "name":"Here300k.xml",
-            "scale":412499
+            "name": "Here300k.xml",
+            "scale": 412499
           },
           {
-            "name":"Here600k.xml",
-            "scale":749999
+            "name": "Here600k.xml",
+            "scale": 749999
           },
           {
-            "name":"Here1m.xml",
-            "scale":1499999
+            "name": "Here1m.xml",
+            "scale": 1499999
           },
           {
-            "name":"Here2m.xml",
-            "scale":3749999
+            "name": "Here2m.xml",
+            "scale": 3749999
           },
           {
-            "name":"Here5m.xml",
-            "scale":7499999
+            "name": "Here5m.xml",
+            "scale": 7499999
           },
           {
-            "name":"Here10m.xml",
-            "scale":14999999
+            "name": "Here10m.xml",
+            "scale": 14999999
           },
           {
-            "name":"Here20m.xml",
-            "scale":30999999
+            "name": "Here20m.xml",
+            "scale": 30999999
           },
           {
-            "name":"Here40m.xml",
-            "scale":57499999
+            "name": "Here40m.xml",
+            "scale": 57499999
           },
           {
-            "name":"Here75m.xml",
-            "scale":87499999
+            "name": "Here75m.xml",
+            "scale": 87499999
           },
           {
-            "name":"Here100m.xml",
-            "scale":149999999
+            "name": "Here100m.xml",
+            "scale": 149999999
           },
           {
-            "name":"Here200m.xml",
-            "scale":249999999
+            "name": "Here200m.xml",
+            "scale": 249999999
           },
           {
-            "name":"Here300m.xml",
-            "scale":900000000
+            "name": "Here300m.xml",
+            "scale": 900000000
           }
         ],
-        "interactive":false,
-        "preview":true,
-        "szhack":false,
-        "language":"fin",
-        "rotation":0,
-        "copyright":{
-          "font":{
-            "fontsize":{
-              "value":1.5,
-              "unit":"millimeter"
+        "interactive": false,
+        "preview": true,
+        "szhack": false,
+        "language": "fin",
+        "rotation": 0,
+        "copyright": {
+          "font": {
+            "size": {
+              "value": 1.5,
+              "unit": "millimeter"
             },
-            "fontname":"ArialMT",
-            "color":{
-              "R":0,
-              "G":0,
-              "B":0
+            "name": "ArialMT",
+            "color": {
+              "R": 0,
+              "G": 0,
+              "B": 0
             }
           },
-          "textbox":{
-            "background":{
-              "R":255,
-              "G":255,
-              "B":255
+          "textbox": {
+            "background": {
+              "R": 255,
+              "G": 255,
+              "B": 255
             }
           },
-          "anchor":"bottomleft",
-          "margin":{
-            "width":{
-              "value":0.5,
-              "unit":"millimeter"
+          "anchor": "bottomleft",
+          "margin": {
+            "width": {
+              "value": 0.5,
+              "unit": "millimeter"
             },
-            "height":{
-              "value":0.5,
-              "unit":"millimeter"
+            "height": {
+              "value": 0.5,
+              "unit": "millimeter"
             }
           }
         }
       },
-      "paper":{
-        "size":{
-          "width":{
-            "value":306,
-            "unit":"millimeter"
+      "paper": {
+        "size": {
+          "width": {
+            "value": 306,
+            "unit": "millimeter"
           },
-          "height":{
-            "value":240,
-            "unit":"millimeter"
+          "height": {
+            "value": 240,
+            "unit": "millimeter"
           }
         }
       },
-      "output":[
+      "output": [
         "eps"
       ],
-      "scaleDefinition":{
-        "downLeft":{
-          "coordSys":"wgs",
-          "lat":36.831291,
-          "long":-2.469019
+      "scaleDefinition": {
+        "downLeft": {
+          "coordSys": "wgs",
+          "lat": 36.831291,
+          "long": -2.469019
         },
-        "upRight":{
-          "coordSys":"wgs",
-          "lat":36.842179,
-          "long":-2.451618
+        "upRight": {
+          "coordSys": "wgs",
+          "lat": 36.842179,
+          "long": -2.451618
         }
       }
     }
@@ -1022,7 +1022,7 @@ This object represents a map
 | meta            | object            | Yes      | Defines the metadata, can either be **"metadata-basis"**, **"metadata-multilang"** |
 | paper           | paper             | Yes      | Defines the paper the map will be on     |
 | scaleDefinition | object            | Yes      | Defines the scale, can either be "boundingBox", "scale", "fromPois" |
-| scalebar        | scalebar          | No       | Define the scalebar that will be put on the map |
+| scaleBar        | scaleBar          | No       | Define the scaleBar that will be put on the map |
 | northIndicator  | northIndicator    | No       | Define the north indicator that will be put on the map |
 | grid            | grid              | No       | Define a grid that will be put on the map |
 | vectorLayers    | array of string   | No       | Define Vectorlayer(s) that will be put on the map |
@@ -1037,149 +1037,149 @@ This object represents a map
 
 ```json
 {
-  "id":912,
-  "command":"generate",
-  "maps":[
+  "id": 912,
+  "command": "generate",
+  "maps": [
     {
-      "meta":{
-        "id":912,
-        "mapstyle":[
+      "meta": {
+        "id": 912,
+        "mapstyle": [
           {
-            "name":"here5k.xml",
-            "scale":7499
+            "name": "here5k.xml",
+            "scale": 7499
           },
           {
-            "name":"here10k.xml",
-            "scale":16249
+            "name": "here10k.xml",
+            "scale": 16249
           },
           {
-            "name":"here20k.xml",
-            "scale":27499
+            "name": "here20k.xml",
+            "scale": 27499
           },
           {
-            "name":"here40k.xml",
-            "scale":47499
+            "name": "here40k.xml",
+            "scale": 47499
           },
           {
-            "name":"here75k.xml",
-            "scale":92499
+            "name": "here75k.xml",
+            "scale": 92499
           },
           {
-            "name":"here150k.xml",
-            "scale":177499
+            "name": "here150k.xml",
+            "scale": 177499
           },
           {
-            "name":"here300k.xml",
-            "scale":412499
+            "name": "here300k.xml",
+            "scale": 412499
           },
           {
-            "name":"here600k.xml",
-            "scale":749999
+            "name": "here600k.xml",
+            "scale": 749999
           },
           {
-            "name":"here1m.xml",
-            "scale":1499999
+            "name": "here1m.xml",
+            "scale": 1499999
           },
           {
-            "name":"here2m.xml",
-            "scale":3749999
+            "name": "here2m.xml",
+            "scale": 3749999
           },
           {
-            "name":"here5m.xml",
-            "scale":7499999
+            "name": "here5m.xml",
+            "scale": 7499999
           },
           {
-            "name":"here10m.xml",
-            "scale":14999999
+            "name": "here10m.xml",
+            "scale": 14999999
           },
           {
-            "name":"here20m.xml",
-            "scale":30999999
+            "name": "here20m.xml",
+            "scale": 30999999
           },
           {
-            "name":"here40m.xml",
-            "scale":57499999
+            "name": "here40m.xml",
+            "scale": 57499999
           },
           {
-            "name":"here75m.xml",
-            "scale":87499999
+            "name": "here75m.xml",
+            "scale": 87499999
           },
           {
-            "name":"here100m.xml",
-            "scale":149999999
+            "name": "here100m.xml",
+            "scale": 149999999
           },
           {
-            "name":"here200m.xml",
-            "scale":249999999
+            "name": "here200m.xml",
+            "scale": 249999999
           },
           {
-            "name":"here300m.xml",
-            "scale":900000000
+            "name": "here300m.xml",
+            "scale": 900000000
           }
         ],
-        "interactive":false,
-        "preview":true,
-        "szhack":false,
-        "language":"eng",
-        "rotation":0,
-        "copyright":{
-          "font":{
-            "size":{
-              "value":1.5,
-              "unit":"millimeter"
+        "interactive": false,
+        "preview": true,
+        "szhack": false,
+        "language": "eng",
+        "rotation": 0,
+        "copyright": {
+          "font": {
+            "size": {
+              "value": 1.5,
+              "unit": "millimeter"
             },
-            "name":"ArialMT",
-            "color":{
-              "R":0,
-              "G":0,
-              "B":0
+            "name": "ArialMT",
+            "color": {
+              "R": 0,
+              "G": 0,
+              "B": 0
             }
           },
-          "textbox":{
+          "textbox": {
           },
-          "margin":{
-            "width":{
-              "value":0.5,
-              "unit":"millimeter"
+          "margin": {
+            "width": {
+              "value": 0.5,
+              "unit": "millimeter"
             },
-            "height":{
-              "value":0.5,
-              "unit":"millimeter"
+            "height": {
+              "value": 0.5,
+              "unit": "millimeter"
             }
           },
-          "anchor":"bottomleft"
+          "anchor": "bottomleft"
         }
       },
-      "paper":{
-        "size":{
-          "width":{
-            "value":425,
-            "unit":"point"
+      "paper": {
+        "size": {
+          "width": {
+            "value": 425,
+            "unit": "point"
           },
-          "height":{
-            "value":283,
-            "unit":"point"
+          "height": {
+            "value": 283,
+            "unit": "point"
           }
         }
       },
-      "output":[
+      "output": [
         "eps"
       ],
-      "scaleDefinition":{
-        "downLeft":{
-          "coordsys":"wgs",
-          "lat":48.699558,
-          "long":1.9777
+      "scaleDefinition": {
+        "downLeft": {
+          "coordsys": "wgs",
+          "lat": 48.699558,
+          "long": 1.9777
         },
-        "upRight":{
-          "coordsys":"wgs",
-          "lat":49.048068,
-          "long":2.771146
+        "upRight": {
+          "coordsys": "wgs",
+          "lat": 49.048068,
+          "long": 2.771146
         }
       },
-      "icons":[
+      "icons": [
       ],
-      "polylines":[
+      "polylines": [
       ]
     }
   ]

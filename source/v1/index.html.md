@@ -774,7 +774,7 @@ $http = new GuzzleHttp\Client([
 // 1. Job
 $jobResponse = $http->post('v1/jobs', [
     GuzzleHttp\RequestOptions::JSON => [
-        'job_type_id' => 1, // Annotation Map
+        'job_type_id' => 7, // API Map
         'title' => 'My Map',
     ],
 ]);
