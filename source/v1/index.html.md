@@ -724,7 +724,7 @@ The `search` method is an extension of `list`. This means that `.search({})` is 
 
 ### Notes:
 
- - For JS this example uses our Wrapper
+ - For JS this example uses our API Wrapper
  - For PHP this example uses `GuzzleHttp`
  - We're gonna build the map defined in [this json file](/assets/map.json)
 
@@ -735,7 +735,7 @@ const api = new Maps4News(token);
 
 // 1. Job
 const job = await api.jobs.new({
-  jobTypeId: 1,
+  jobTypeId: 7,
   title: 'My Map'
 }).save();
 
@@ -744,7 +744,7 @@ import * as mapObject from './map.json'; // NodeJS
 
 const revision = await job.revisions.new({
   languageCode: 'eng',
-  mapstyleSetId: 1
+  mapstyleSetId: 60 // Here Mapstyle
 }).save(mapObject);
 
 // 3. Building

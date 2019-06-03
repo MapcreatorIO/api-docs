@@ -1,17 +1,17 @@
 {
   "name": "api-docs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "compile-docs-wrapper": "npx esdoc",
     "generate-model-tables": "node scripts/generateTables.js"
   },
   "dependencies": {
-    "@mapcreator/maps4news": "^1.4.22",
+    "@mapcreator/maps4news": "^1.6.12",
     "esdoc": "^1.1.0",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
     "esdoc-importpath-plugin": "^1.0.2",
     "esdoc-standard-plugin": "^1.0.0",
-    "swagger-ui": "^3.18.1"
+    "swagger-ui": "^3.22.2"
   },
   "esdoc": {
     "name": "maps4news",
