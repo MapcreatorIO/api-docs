@@ -6,7 +6,7 @@
     "generate-model-tables": "node scripts/generateTables.js"
   },
   "dependencies": {
-    "@mapcreator/maps4news": "^1.6.12",
+    "@mapcreator/maps4news": "^1.6.22",
     "esdoc": "^1.1.0",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
     "esdoc-importpath-plugin": "^1.0.2",
@@ -41,6 +41,16 @@
           "brand": {
             "title": "Maps4News Api Wrapper",
             "description": "Maps4News Api Javascript Wrapper"
+          },
+          "manual": {
+            "asset": "./node_modules/@mapcreator/maps4news/manual/assets",
+            "index": "./node_modules/@mapcreator/maps4news/README.md",
+            "files": [
+              "./node_modules/@mapcreator/maps4news/manual/examples.md",
+              "./node_modules/@mapcreator/maps4news/manual/examples.authentication.md",
+              "./node_modules/@mapcreator/maps4news/manual/building.md",
+              "./node_modules/@mapcreator/maps4news/manual/installation.md"
+            ]
           }
         }
       },
@@ -61,7 +71,19 @@
             }
           ]
         }
+      },
+      {
+        "name": "esdoc-inject-script-plugin",
+        "option": {
+          "enable": true,
+          "scripts": [
+            "./node_modules/@mapcreator/maps4news/dist/bundle.browser.js",
+          ]
+        }
       }
     ]
+  },
+  "devDependencies": {
+    "esdoc-inject-script-plugin": "^1.0.0"
   }
 }

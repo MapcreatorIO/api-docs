@@ -10,7 +10,7 @@ node('node') {
     sh 'npm install'
     sh 'npm run compile-docs-wrapper'
     sh 'npm run generate-model-tables'
-    sh 'sudo bundle install'
+    sh 'sudo bundle install' // 🤢🤮
     sh 'bundle exec middleman build --clean'
   }
 
