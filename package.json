@@ -77,7 +77,7 @@
         "option": {
           "enable": true,
           "scripts": [
-            "./node_modules/@mapcreator/maps4news/dist/bundle.browser.js",
+            "./node_modules/@mapcreator/maps4news/dist/bundle.browser.js"
           ]
         }
       }
