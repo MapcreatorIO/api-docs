@@ -744,7 +744,7 @@ import * as mapObject from './map.json'; // NodeJS
 
 const revision = await job.revisions.new({
   languageCode: 'eng',
-  mapstyleSetId: 60 // Here Mapstyle
+  mapstyleSetId: 186 // Maps4News mapstyle
 }).save(mapObject);
 
 // 3. Building
@@ -787,7 +787,7 @@ $mapObject = file_get_contents('./map.json'); // As a string
 $revisionResponse = $http->post("/v1/jobs/$job->id/revisions", [
     GuzzleHttp\RequestOptions::JSON => [
         'language_code' => 'eng',
-        'mapstyle_set_id' => 60, // Here Mapstyle
+        'mapstyle_set_id' => 186, // Maps4News mapstyle
         'object' => $mapObject,
     ],
 ]);

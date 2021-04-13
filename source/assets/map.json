@@ -17,19 +17,18 @@
             "B": 0
           }
         },
-        "anchor": "topleft"
+        "anchor": "bottomright"
       },
-      "szhack": false,
       "preview": true
     },
     "paper": {
       "size": {
         "width": {
-          "value": 5,
+          "value": 10,
           "unit": "centimeter"
         },
         "height": {
-          "value": 5,
+          "value": 10,
           "unit": "centimeter"
         }
       }
@@ -50,16 +49,16 @@
       {
         "id": 1,
         "name": "Text Box",
-        "source": "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"81.36\" height=\"62.76\" mol_popupanchor=\"10.76 0\" viewBox=\"-0.7937500000000002 0.6749999999999998 21.525 16.603125\" xml:space=\"preserve\" mol_embed=\"true\" mol_dragall=\"true\" mol_resizeenabled=\"false\" mol_initial_update=\"TitleText\" mol_svganchor=\"11.46875 14.984375\"><g id=\"scale\" transform=\"scale(1)\"><path id=\"PointerPath\" d=\"M 9.96875 10.984375 L 9.96875 12.984375 L 11.46875 14.984375\" style=\"fill:none; stroke-width: 0.3;\" stroke=\"#000000\" mol_edit_style=\"false\" mol_edit_anchor=\"0 2\" mol_rectposition=\"BodyRect bottom middle\"></path><rect id=\"TopRect\" width=\"17.9375\" height=\"5.15625\" x=\"1\" y=\"2.46875\" fill=\"#000000\" stroke-dasharray=\"null\" stroke-width=\"0.1\" stroke=\"#000000\" mol_autoresizeid=\"TitleText\" mol_autoresizemargin=\"1\" mol_stack=\"top BodyRect\"></rect><rect id=\"BodyRect\" width=\"17.9375\" height=\"3.359375\" x=\"1\" y=\"7.625\" fill=\"#ffffff\" stroke-dasharray=\"null\" stroke-width=\"0.1\" stroke=\"#000000\" mol_sameheight=\"BodyText 0.5\" mol_stack=\"bottom TopRect\"></rect><text id=\"TitleText\" x=\"2\" y=\"6\" font-family=\"Helvetica\" font-weight=\"bold\" font-style=\"normal\" font-size=\"2.82222\" fill=\"#FFFFFF\" style=\"font-kerning:none; white-space:pre;\" mol_edit_style=\"true\" mol_edit_text=\"true\" mol_font=\"Helvetica-Bold\">Title stretch</text><text id=\"BodyText\" x=\"1.5\" y=\"10.01875\" font-family=\"Helvetica\" font-weight=\"normal\" font-style=\"normal\" font-size=\"2.11667\" fill=\"#000000\" style=\"font-kerning:none; white-space:pre;\" text-anchor=\"start\" mol_edit_style=\"true\" mol_edit_text=\"true\" mol_wrap=\"true BodyRect 0.5\" mol_font=\"Helvetica\"><tspan x=\"1.5\" dy=\"0\" id=\"BodyText0\">Body wrap</tspan></text><circle id=\"Point\" cx=\"11.46875\" cy=\"14.984375\" r=\"0.5\" fill=\"#000000\" stroke=\"none\" mol_pathposition=\"PointerPath 0 2\"></circle></g></svg>",
+        "source": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" mol_popupanchor=\"3.9 0\" viewBox=\"-0.027792739868164107 1.4376637458801267 18.33351287841797 9.762003993988037\" mol_embed=\"true\" mol_dragall=\"true\" mol_svganchor=\"1.5 8.67327880859375\" mol_initial_update=\"TitleText\" id=\"herea953e8ba-1f1a-4926-b2b1-0383c27b30d2\" class=\"noselect\" width=\"18.33351287841797\" height=\"9.762003993988037\" style=\"\"><g id=\"scale\" transform=\"scale(1)\" style=\"pointer-events:auto;\"><g name=\"textbox\" fill=\"#FF5C5C\" mol_edit_style=\"true\"><path id=\"Pointer\" d=\"M1.5,7.13372 L1.5,8.67328 L3,7.13372\" mol_edit_anchor=\"0 1\" mol_rectposition=\"Rectangle bottom start\"\/><path id=\"PointerLine\" d=\"M1.5,8.67328 L1.5,9.67328\" mol_pathposition=\"Pointer 0 1\"\/><rect id=\"Rectangle\" width=\"15.277928352355957\" height=\"4.168179512023926\" x=\"1.5\" y=\"2.965456485748291\" mol_edit_style=\"true\" mol_autoresizeid=\"TitleText\" mol_autoresizemargin=\"0.5\"\/><\/g><text id=\"TitleText\" x=\"2\" y=\"6\" font-family=\"Arial\" mol_font=\"ArialMT\" font-weight=\"400\" font-style=\"normal\" font-size=\"2.82222\" fill=\"#FFFFFF\" style=\"font-kerning:none; white-space:pre;\" mol_edit_style=\"true\" mol_edit_text=\"true\"><tspan x=\"2\" dy=\"0\" id=\"TitleText0\">Mapcreator<\/tspan><\/text><\/g><\/svg>",
         "coord": {
           "coordSys": "wgs",
-          "lat": 51.438524,
-          "lon": 5.478412
+          "lat": 51.444302,
+          "lon": 5.47415
         }
       }
     ],
     "output": [
-      "png"
+      "svg"
     ]
   }
 }
