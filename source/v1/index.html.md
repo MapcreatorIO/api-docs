@@ -731,6 +731,8 @@ The `search` method is an extension of `list`. This means that `.search({})` is 
 To build a map via our system, you first need to create a few resources.
 
 ```javascript--wrapper
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 const api = new Maps4News(token);
 
 // 1. Job
@@ -751,12 +753,22 @@ const revision = await job.revisions.new({
 const build = await revision.build('http://example.com/callback');
 
 // 4. Job Result
-const result = await revision.result();
+let result;
 
-// 5. Getting the preview
-const preview = await result.downloadPreview();
+do {
+  await sleep(1000);
 
-window.location = preview;
+  result = await revision.result();  
+} while (['queued', 'processing'].includes(result.status))
+
+if (result.status === 'completed') {
+  // 5. Getting the preview
+  const preview = await result.downloadPreview();
+
+  window.location = preview.toDataUri();
+} else {
+  console.log("Something went wrong, received result status", result.status);
+}
 ```
 
 ```php
@@ -779,7 +791,7 @@ $jobResponse = $http->post('v1/jobs', [
     ],
 ]);
 
-$job = json_decode($jobResponse->getBody());
+$job = json_decode($jobResponse->getBody())->data;
 
 // 2. Job Revision
 $mapObject = file_get_contents('./map.json'); // As a string
@@ -792,17 +804,17 @@ $revisionResponse = $http->post("/v1/jobs/$job->id/revisions", [
     ],
 ]);
 
-$revision = json_decode($revisionResponse->getBody());
+$revision = json_decode($revisionResponse->getBody())->data;
 
 // 3. Building
 $buildResponse = $http->post("/v1/jobs/$job->id/revisions/$revision->revision/build");
 
-$build = json_decode($buildResponse->getBody());
+$build = json_decode($buildResponse->getBody())->data;
 
 // 4. Job Result
 $resultResponse = $http->get("/v1/jobs/$job->id/revisions/$revision->revision/result");
 
-$result = json_decode($resultResponse->getBody());
+$result = json_decode($resultResponse->getBody())->data;
 
 // 5. Getting the Preview
 $previewResponse = $http->get("/v1/jobs/$job->id/revisions/$revision->revision/result/preview");
