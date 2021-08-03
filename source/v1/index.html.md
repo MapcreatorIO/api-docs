@@ -727,6 +727,7 @@ The `search` method is an extension of `list`. This means that `.search({})` is 
  - For JS this example uses our API Wrapper
  - For PHP this example uses `GuzzleHttp`
  - We're gonna build the map defined in [this json file](/assets/map.json)
+ - You'll need to wait for the result to finish processing before requesting it's artifacts (output/preview)
 
 To build a map via our system, you first need to create a few resources.
 
